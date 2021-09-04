@@ -10,6 +10,7 @@ public class PlayerShooting : MonoBehaviour
     private float fireRateCountdown = 0f;
     private bool canFire = false;
     public Transform shootPoint;
+    public Transform shootAxis;
     public float shootSpeed;
     public Camera mainCam;
 
@@ -28,7 +29,7 @@ public class PlayerShooting : MonoBehaviour
 
     private void Update()
     {
-        RotatePlayer();
+        RotateShootAxis();
         TimeFireRate();
         FireInput();
     }
@@ -41,13 +42,13 @@ public class PlayerShooting : MonoBehaviour
         fireRateCountdown -= Time.deltaTime;
     }
 
-    private void RotatePlayer()
+    private void RotateShootAxis()
     {
         Vector2 mousePos = new Vector2(Mouse.current.position.x.ReadValue(), Mouse.current.position.y.ReadValue());
         Vector2 playerPos = mainCam.WorldToScreenPoint(transform.position);
         Vector3 rotateVector = mousePos - playerPos;
-        float rotation = Mathf.Atan2(-rotateVector.y, rotateVector.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(0, rotation, 0);
+        float rotation = Mathf.Atan2(rotateVector.y, rotateVector.x) * Mathf.Rad2Deg;
+        shootAxis.rotation = Quaternion.Euler(0, 0, rotation);
     }
     public void FireInput()
     {
@@ -55,9 +56,8 @@ public class PlayerShooting : MonoBehaviour
             return;
 
         GameObject shot = Instantiate<GameObject>(playerBulletPrefab, shootPoint.position, Quaternion.identity) as GameObject;
-        Rigidbody rbShot = shot.GetComponent<Rigidbody>();
-        rbShot.velocity = transform.right * shootSpeed;
+        Rigidbody2D rbShot = shot.GetComponent<Rigidbody2D>();
+        rbShot.velocity = shootAxis.right * shootSpeed;
         fireRateCountdown = fireRate;
-
     }
 }

@@ -7,11 +7,11 @@ public class PlayerMovement : MonoBehaviour
 {
     private Vector2 movementVector;
     public float movementSpeed;
-    private Rigidbody rb;
+    private Rigidbody2D rb;
 
     private void Start()
     {
-        rb = gameObject.GetComponent<Rigidbody>();
+        rb = gameObject.GetComponent<Rigidbody2D>();
     }
 
     public void Update()
@@ -21,8 +21,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void Move()
     {
-        Vector3 velocity = new Vector3(movementVector.x, 0, movementVector.y) * movementSpeed * Time.fixedDeltaTime;
-        rb.velocity = velocity;
+        rb.velocity = movementVector * movementSpeed * Time.fixedDeltaTime;
     }
 
     public void MoveInput(InputAction.CallbackContext ctx)
