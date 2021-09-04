@@ -13,8 +13,7 @@ public class PlayerShooting : MonoBehaviour
     public Transform shootAxis;
     public float shootSpeed;
     public Camera mainCam;
-
-
+    public ParticleSystem shootParticles;
 
     private PlayerControls controls;
 
@@ -25,7 +24,6 @@ public class PlayerShooting : MonoBehaviour
 
         controls.Enable();
     }
-
 
     private void Update()
     {
@@ -59,5 +57,6 @@ public class PlayerShooting : MonoBehaviour
         Rigidbody2D rbShot = shot.GetComponent<Rigidbody2D>();
         rbShot.velocity = shootAxis.right * shootSpeed;
         fireRateCountdown = fireRate;
+        shootParticles.Play();
     }
 }
