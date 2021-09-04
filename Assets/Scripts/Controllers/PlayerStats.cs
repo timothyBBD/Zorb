@@ -2,23 +2,11 @@
 
 public class PlayerStatsController
 {
-    private int strength;
+    public float strength;
     private int agility;
     private int health;
-
     private int MAX_STAT = 100;
     private int MIN_STAT = 0;
-
-    public PlayerStats(int strength, int agility, int health)
-    {
-        this.agility = agility;
-        this.strength = strength;
-        this.health = health;
-    }
-
-    public int Strength { get => strength; }
-    public int Agility { get => agility; }
-    public int Health { get => health; }
 
     public void IncreaseAgility(int agilityIncrease)
     {
