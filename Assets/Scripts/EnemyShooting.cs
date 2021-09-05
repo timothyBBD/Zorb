@@ -9,7 +9,7 @@ public class EnemyShooting : MonoBehaviour
     public Rigidbody2D bullet;
     private float bulletSpeed;
 
-    void Awake()
+    void Start()
     {
         bulletSpeed = bullet.gameObject.GetComponent<EnemyBulletProjectile>().bulletSpeed;   
     }
@@ -50,11 +50,6 @@ public class EnemyShooting : MonoBehaviour
             Rigidbody2D bulletClone = (Rigidbody2D) Instantiate(bullet, transform.position, Quaternion.identity);
             bulletClone.velocity = bulletDirection * bulletSpeed;
         }
-    }
-
-    private void Start()
-    {
-        SingleFire(Vector2.one);
     }
 
 }

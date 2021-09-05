@@ -7,9 +7,9 @@ public class EnemyBulletProjectile : MonoBehaviour
     public float bulletDamage = 5f;
     public float bulletSpeed = 3f;
 
-
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         Destroy(gameObject);
     }
+
 }
