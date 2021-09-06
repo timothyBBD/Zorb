@@ -14,6 +14,7 @@ public class PlayerShooting : MonoBehaviour
     public float shootSpeed;
     public Camera mainCam;
     public ParticleSystem shootParticles;
+    public Animator shootAnimator;
 
     private PlayerControls controls;
 
@@ -22,12 +23,12 @@ public class PlayerShooting : MonoBehaviour
         controls = new PlayerControls();
         controls.Player.Fire.performed += _ => canFire = !canFire;
 
+
         controls.Enable();
     }
 
     private void Update()
     {
-        RotateShootAxis();
         TimeFireRate();
         FireInput();
     }
@@ -39,15 +40,6 @@ public class PlayerShooting : MonoBehaviour
 
         fireRateCountdown -= Time.deltaTime;
     }
-
-    private void RotateShootAxis()
-    {
-        Vector2 mousePos = new Vector2(Mouse.current.position.x.ReadValue(), Mouse.current.position.y.ReadValue());
-        Vector2 playerPos = mainCam.WorldToScreenPoint(transform.position);
-        Vector3 rotateVector = mousePos - playerPos;
-        float rotation = Mathf.Atan2(rotateVector.y, rotateVector.x) * Mathf.Rad2Deg;
-        shootAxis.rotation = Quaternion.Euler(0, 0, rotation);
-    }
     public void FireInput()
     {
         if (fireRateCountdown > 0 || !canFire)
@@ -58,5 +50,7 @@ public class PlayerShooting : MonoBehaviour
         rbShot.velocity = shootAxis.right * shootSpeed;
         fireRateCountdown = fireRate;
         shootParticles.Play();
+        shootAnimator.SetTrigger("shoot");
+        shootAnimator.SetBool("isShooting", true);
     }
 }

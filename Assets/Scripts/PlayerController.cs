@@ -30,11 +30,8 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-
     public void TakeDamage(float amount)
     {
-
-
         health -= amount - (amount * MaxDamageReduction * strength / MAX_STAT);
     }
 }

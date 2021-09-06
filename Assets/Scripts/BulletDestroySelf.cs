@@ -15,5 +15,4 @@ public class BulletDestroySelf : MonoBehaviour
         yield return new WaitForSecondsRealtime(timeToLive);
         Destroy(gameObject);
     }
-
 }

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6337586239691315388}
   - component: {fileID: 624047149663846640}
   - component: {fileID: -3571211584026396831}
+  - component: {fileID: -152657132505215395}
   m_Layer: 0
   m_Name: playerSlime
   m_TagString: Untagged
@@ -134,3 +135,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fe45f2f287107f45af1314a64538b58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &-152657132505215395
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 845641617386474914}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: aedc7e9728d298443a9f7fa269a90779, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
