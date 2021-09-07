@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4290117199269536630}
   - component: {fileID: 6471769579065263154}
   - component: {fileID: 6617406381125079700}
+  - component: {fileID: 4545325230536211136}
   m_Layer: 0
   m_Name: EnemyConeWave
   m_TagString: Untagged
@@ -139,3 +140,15 @@ MonoBehaviour:
   targetScale: {x: 0.36, y: 0.36, z: 0.36}
   startingScale: {x: 0, y: 0, z: 0}
   scaleSpeed: 1.2
+--- !u!114 &4545325230536211136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8079789109146448640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fe45f2f287107f45af1314a64538b58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

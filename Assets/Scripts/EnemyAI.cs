@@ -1,6 +1,8 @@
 using UnityEngine;
 using Pathfinding;
 using System.Reflection;
+using System.Collections;
+
 public class EnemyAI : MonoBehaviour
 {
     public enum FireType
@@ -12,8 +14,11 @@ public class EnemyAI : MonoBehaviour
     
     EnemyShooting enemyShooting;
     GameObject player;
+    GameObject weapon;
+    Animator weaponAnimator;
     AIPath pathfinding;
     float timeSinceLastShot = 0f;
+    bool isFiring = false;
 
     public float detectionRange = 10f;
     public bool alwaysChase = true;
@@ -39,6 +44,8 @@ public class EnemyAI : MonoBehaviour
     {
         enemyShooting = GetComponent<EnemyShooting>();
         pathfinding = GetComponent<AIPath>();
+        weapon = gameObject.transform.GetChild(0).gameObject;
+        weaponAnimator = weapon.GetComponent<Animator>();
     }
 
     void Start()
@@ -62,16 +69,26 @@ public class EnemyAI : MonoBehaviour
         if(pathfinding.canSearch)
         {
             timeSinceLastShot += Time.deltaTime;
-            if(timeSinceLastShot >= fireRate)
+            if(timeSinceLastShot >= fireRate && !isFiring)
             {
-                Fire();
-                timeSinceLastShot = 0f;
+                StartCoroutine(AnimateWeaponChargeUpAndFire());
             }
         }
     }
 
+    IEnumerator AnimateWeaponChargeUpAndFire()
+    {
+        isFiring = true;
+        weaponAnimator.SetBool("isShooting", true);
+        yield return new WaitForSeconds(0.35f);
+        weaponAnimator.SetBool("isShooting", false);
+        Fire();
+    }
+
     void Fire()
     {
+        isFiring = false;
+        timeSinceLastShot = 0;
         string fireTypeName = fireType.ToString() + "Fire";
         MethodInfo fireMethod = typeof(EnemyShooting).GetMethod(fireTypeName);
         fireMethod.Invoke(enemyShooting, new object[] { getDirectionToPlayer() });
