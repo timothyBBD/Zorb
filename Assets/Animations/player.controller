@@ -58,7 +58,7 @@ AnimatorStateMachine:
     m_Position: {x: 600, y: 140, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 7757297493689160830}
-    m_Position: {x: 1090, y: 310, z: 0}
+    m_Position: {x: 1060, y: 310, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -1650355735156201437}
     m_Position: {x: -100, y: 390, z: 0}
@@ -85,7 +85,7 @@ AnimatorStateMachine:
     m_Position: {x: 1060, y: 150, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -2928715760208871792}
-    m_Position: {x: 220, y: -280, z: 0}
+    m_Position: {x: 210, y: -280, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -7243114768907743934}
     m_Position: {x: 810, y: -210, z: 0}
@@ -115,11 +115,12 @@ AnimatorStateMachine:
   - {fileID: -7842551370222800076}
   - {fileID: -233393278296179345}
   - {fileID: -6307314005493331602}
+  - {fileID: -7171133376934445167}
   m_EntryTransitions: []
   m_StateMachineTransitions: {}
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: 240, y: 150, z: 0}
-  m_EntryPosition: {x: 1110, y: 460, z: 0}
+  m_EntryPosition: {x: 1080, y: 460, z: 0}
   m_ExitPosition: {x: -790, y: 190, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
   m_DefaultState: {fileID: 7757297493689160830}
@@ -158,10 +159,10 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 3
     m_ConditionEvent: angle
-    m_EventTreshold: 91
+    m_EventTreshold: 100
   - m_ConditionMode: 4
     m_ConditionEvent: angle
-    m_EventTreshold: 179
+    m_EventTreshold: 170
   - m_ConditionMode: 3
     m_ConditionEvent: velocity
     m_EventTreshold: 0.1
@@ -234,6 +235,37 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
+--- !u!1101 &-7171133376934445167
+AnimatorStateTransition:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_Conditions:
+  - m_ConditionMode: 4
+    m_ConditionEvent: angle
+    m_EventTreshold: -171
+  - m_ConditionMode: 3
+    m_ConditionEvent: velocity
+    m_EventTreshold: 0.1
+  - m_ConditionMode: 2
+    m_ConditionEvent: isShooting
+    m_EventTreshold: 0
+  m_DstStateMachine: {fileID: 0}
+  m_DstState: {fileID: 6235984766980595491}
+  m_Solo: 0
+  m_Mute: 0
+  m_IsExit: 0
+  serializedVersion: 3
+  m_TransitionDuration: 0
+  m_TransitionOffset: 0.32608712
+  m_ExitTime: 1.0760868
+  m_HasExitTime: 0
+  m_HasFixedDuration: 1
+  m_InterruptionSource: 0
+  m_OrderedInterruption: 1
+  m_CanTransitionToSelf: 0
 --- !u!1101 &-6307314005493331602
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -294,10 +326,10 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 3
     m_ConditionEvent: angle
-    m_EventTreshold: -1
+    m_EventTreshold: -9
   - m_ConditionMode: 4
     m_ConditionEvent: angle
-    m_EventTreshold: 1
+    m_EventTreshold: 9
   - m_ConditionMode: 3
     m_ConditionEvent: velocity
     m_EventTreshold: 0.1
@@ -584,10 +616,10 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 3
     m_ConditionEvent: angle
-    m_EventTreshold: 1
+    m_EventTreshold: 10
   - m_ConditionMode: 4
     m_ConditionEvent: angle
-    m_EventTreshold: 89
+    m_EventTreshold: 80
   - m_ConditionMode: 3
     m_ConditionEvent: velocity
     m_EventTreshold: 0.1
@@ -649,25 +681,25 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: velocity
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: shoot
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: isShooting
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -738,10 +770,10 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 3
     m_ConditionEvent: angle
-    m_EventTreshold: -89
+    m_EventTreshold: -80
   - m_ConditionMode: 4
     m_ConditionEvent: angle
-    m_EventTreshold: -1
+    m_EventTreshold: -10
   - m_ConditionMode: 3
     m_ConditionEvent: velocity
     m_EventTreshold: 0.1
@@ -772,10 +804,10 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 3
     m_ConditionEvent: angle
-    m_EventTreshold: -91
+    m_EventTreshold: -99
   - m_ConditionMode: 4
     m_ConditionEvent: angle
-    m_EventTreshold: -89
+    m_EventTreshold: -81
   - m_ConditionMode: 3
     m_ConditionEvent: velocity
     m_EventTreshold: 0.1
@@ -910,10 +942,10 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 3
     m_ConditionEvent: angle
-    m_EventTreshold: -179
+    m_EventTreshold: -170
   - m_ConditionMode: 4
     m_ConditionEvent: angle
-    m_EventTreshold: -91
+    m_EventTreshold: -100
   - m_ConditionMode: 3
     m_ConditionEvent: velocity
     m_EventTreshold: 0.1
@@ -944,10 +976,10 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 3
     m_ConditionEvent: angle
-    m_EventTreshold: 89
+    m_EventTreshold: 81
   - m_ConditionMode: 4
     m_ConditionEvent: angle
-    m_EventTreshold: 91
+    m_EventTreshold: 99
   - m_ConditionMode: 3
     m_ConditionEvent: velocity
     m_EventTreshold: 0.1
@@ -1082,7 +1114,7 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 3
     m_ConditionEvent: angle
-    m_EventTreshold: 179
+    m_EventTreshold: 169
   - m_ConditionMode: 4
     m_ConditionEvent: angle
     m_EventTreshold: 181

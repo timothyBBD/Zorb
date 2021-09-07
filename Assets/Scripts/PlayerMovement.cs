@@ -11,6 +11,25 @@ public class PlayerMovement : MonoBehaviour
     public Transform rotationAxis;
     public Animator animator;
 
+    public float dashSpeed;
+    public float dashRate = 0.5f;
+    public float dashDuration = 0.3f;
+
+    private float dashCountdown = 0f;
+    private bool isDashing = false;
+    private Vector2 preDashVelocity;
+
+    private PlayerControls controls;
+
+    private void Awake()
+    {
+        controls = new PlayerControls();
+        controls.Player.Dash.performed += _ => Dash();
+
+
+        controls.Enable();
+    }
+
     private void Start()
     {
         rb = gameObject.GetComponent<Rigidbody2D>();
@@ -18,11 +37,15 @@ public class PlayerMovement : MonoBehaviour
 
     public void Update()
     {
+        DashCooldown();
+        EndDash();
         Move();
     }
 
     public void Move()
     {
+        if (isDashing)
+            return;
         rb.velocity = movementVector * movementSpeed * Time.fixedDeltaTime;
         animator.SetFloat("velocity", rb.velocity.magnitude);
     }
@@ -38,4 +61,35 @@ public class PlayerMovement : MonoBehaviour
         movementVector = ctx.ReadValue<Vector2>();
         RotatePlayer();
     }
+
+    private void DashCooldown()
+    {
+        dashCountdown -= Time.deltaTime;
+
+    }
+    private void EndDash()
+    {
+
+        if (dashCountdown < (dashRate - dashDuration))
+        {
+            isDashing = false;
+            rb.velocity = preDashVelocity;
+        }
+
+    }
+
+
+    private void Dash()
+    {
+        if (dashCountdown > 0)
+        {
+            return;
+        }
+        preDashVelocity = rb.velocity;
+        rb.velocity = rb.velocity + movementVector * dashSpeed;
+        isDashing = true;
+        dashCountdown = dashRate;
+
+    }
+
 }
