@@ -135,7 +135,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58187861b58d75c479df65bb071e276a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletDamage: 7
+  bulletDamage: 10
   bulletSpeed: 3
   targetScale: {x: 0.36, y: 0.36, z: 0.36}
   startingScale: {x: 0, y: 0, z: 0}

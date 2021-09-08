@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Pickup
   - Enemy
+  - PlayerBullet
   layers:
   - Default
   - TransparentFX
@@ -14,7 +15,7 @@ TagManager:
   - Water
   - UI
   - Bullets
-  - 
+  - Obstacles
   - 
   - 
   - 
@@ -43,6 +44,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: New Layer
+  - name: Details
     uniqueID: 1512683117
+    locked: 0
+  - name: Player
+    uniqueID: 1491254781
     locked: 0

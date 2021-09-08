@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 1405647824614999484}
   - component: {fileID: 1405647824614999483}
   - component: {fileID: 1405647824614999481}
+  - component: {fileID: 1220895288536172730}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -197,7 +198,7 @@ MonoBehaviour:
   detectionRange: 3.45
   alwaysChase: 0
   fireType: 0
-  fireRate: 1
+  fireRate: 0.5
 --- !u!114 &1405647824614999484
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -257,6 +258,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 6.06, y: 3.84}
   m_EdgeRadius: 0
+--- !u!114 &1220895288536172730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1405647824614999476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e96d7880d66ee14496862160106378e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 40
 --- !u!1 &1405647824921155640
 GameObject:
   m_ObjectHideFlags: 0
