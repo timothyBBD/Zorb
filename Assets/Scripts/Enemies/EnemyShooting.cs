@@ -28,7 +28,8 @@ public class EnemyShooting : MonoBehaviour
 
     public void SingleFire(Vector2 direction)
     {
-        Rigidbody2D bulletClone = (Rigidbody2D) Instantiate(bullet, transform.position, Quaternion.identity);
+        Quaternion bulletRotation = Quaternion.FromToRotation(Vector3.up, new Vector3(direction.x, direction.y));
+        Rigidbody2D bulletClone = (Rigidbody2D) Instantiate(bullet, transform.position, bulletRotation);
         bulletClone.velocity = direction * bulletSpeed;
     }
 
@@ -42,12 +43,13 @@ public class EnemyShooting : MonoBehaviour
         }
     }
 
-    public void RadialFire(int bulletCount)
+    public void RadialFire(Vector2 direction)
     {
-        for(int i = 0; i < bulletCount; i++)
+        for(int i = 0; i < 16; i++)
         {
-            Vector2 bulletDirection = Rotate(Vector2.one, i * (360f / bulletCount));
-            Rigidbody2D bulletClone = (Rigidbody2D) Instantiate(bullet, transform.position, Quaternion.identity);
+            Quaternion bulletRotation = Quaternion.FromToRotation(Vector3.up, new Vector3(direction.x, direction.y));
+            Vector2 bulletDirection = Rotate(direction, i * (360f / 16));
+            Rigidbody2D bulletClone = (Rigidbody2D) Instantiate(bullet, transform.position, bulletRotation);
             bulletClone.velocity = bulletDirection * bulletSpeed;
         }
     }

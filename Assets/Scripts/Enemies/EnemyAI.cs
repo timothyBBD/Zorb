@@ -17,13 +17,13 @@ public class EnemyAI : MonoBehaviour
     GameObject weapon;
     Animator weaponAnimator;
     AIPath pathfinding;
-    float timeSinceLastShot = 0f;
     bool isFiring = false;
 
     public float detectionRange = 10f;
     public bool alwaysChase = true;
     public FireType fireType = FireType.Single;
     public float fireRate = 3f;
+    float countDownTillNextShot = 0f;
 
     Vector2 getDirectionToPlayer()
     {
@@ -68,8 +68,8 @@ public class EnemyAI : MonoBehaviour
         }
         if(pathfinding.canSearch)
         {
-            timeSinceLastShot += Time.deltaTime;
-            if(timeSinceLastShot >= fireRate && !isFiring)
+            countDownTillNextShot -= Time.deltaTime;
+            if(countDownTillNextShot <= 0 && !isFiring)
             {
                 StartCoroutine(AnimateWeaponChargeUpAndFire());
             }
@@ -88,7 +88,7 @@ public class EnemyAI : MonoBehaviour
     void Fire()
     {
         isFiring = false;
-        timeSinceLastShot = 0;
+        countDownTillNextShot = fireRate;
         string fireTypeName = fireType.ToString() + "Fire";
         MethodInfo fireMethod = typeof(EnemyShooting).GetMethod(fireTypeName);
         fireMethod.Invoke(enemyShooting, new object[] { getDirectionToPlayer() });

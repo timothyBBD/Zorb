@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BulletDestroySelf : MonoBehaviour
 {
-    private float timeToLive = 5f;
+    public float timeToLive = 5f;
 
     private void Start()
     {
