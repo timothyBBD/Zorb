@@ -3,9 +3,9 @@ using UnityEngine;
 
 public class EnemyBulletProjectile : MonoBehaviour
 {
-    PlayerController player;
+    protected PlayerController player;
     string playerTag = "Player";
-    string[] collisionTags = new string[] { "PlayerCollider" };
+    protected string[] collisionTags = new string[] { "PlayerCollider" };
 
     public float bulletDamage = 5f;
     public float bulletSpeed = 3f;

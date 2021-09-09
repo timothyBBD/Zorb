@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6617406381125079700}
   - component: {fileID: 4545325230536211136}
   - component: {fileID: -6108743233866673686}
+  - component: {fileID: -6927665735667637655}
   m_Layer: 0
   m_Name: EnemyConeWave
   m_TagString: Untagged
@@ -115,10 +116,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletDamage: 10
-  bulletSpeed: 3
-  targetScale: {x: 0.5, y: 0.5, z: 0.5}
+  bulletSpeed: 1.2
+  targetScale: {x: 0.6, y: 0.6, z: 0.6}
   startingScale: {x: 0, y: 0, z: 0}
-  scaleSpeed: 7
+  scaleSpeed: 0.2
 --- !u!114 &4545325230536211136
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -131,7 +132,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fe45f2f287107f45af1314a64538b58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeToLive: 0.5
+  timeToLive: 1
 --- !u!50 &-6108743233866673686
 Rigidbody2D:
   serializedVersion: 4
@@ -153,3 +154,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!95 &-6927665735667637655
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8079789109146448640}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2200378c4dc89fa478e73921b5f457c8, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

@@ -119,7 +119,7 @@ MonoBehaviour:
   bulletSpeed: 0
   targetScale: {x: 3, y: 3, z: 0}
   startingScale: {x: 0, y: 0, z: 0}
-  scaleSpeed: 3
+  scaleSpeed: 1
 --- !u!114 &3565122256905990495
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -132,7 +132,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fe45f2f287107f45af1314a64538b58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeToLive: 2.5
+  timeToLive: 1.5
 --- !u!50 &6941469882858911956
 Rigidbody2D:
   serializedVersion: 4

@@ -1,12 +1,10 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine;
 
 public class EnemyWaveProjectile : EnemyBulletProjectile
 {
-    PlayerController player;
     Animator projectileAnimator;
-    string playerTag = "Player";
-    string[] collisionTags = new string[] { "PlayerCollider" };
 
     public Vector3 targetScale = Vector3.one;
     public Vector3 startingScale = Vector3.zero;
@@ -14,23 +12,27 @@ public class EnemyWaveProjectile : EnemyBulletProjectile
 
     void Awake()
     {
-        projectileAnimator = GetComponent<Animator>();
+        projectileAnimator = GetComponent<Animator>();    
     }
 
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag(playerTag).GetComponent<PlayerController>();
         transform.localScale = startingScale;
+        StartCoroutine(LerpFunction());
     }
 
-    void FixedUpdate()
+    IEnumerator LerpFunction()
     {
-        transform.localScale = Vector3.Lerp(transform.localScale, targetScale, scaleSpeed * Time.fixedDeltaTime);
-        bool closeEnough = Vector3.Dot(transform.localScale, targetScale) > 0.99f;
-        if(closeEnough && !projectileAnimator.GetBool("FadeOut"))
+        float time = 0;
+
+        while (time < scaleSpeed)
         {
-            projectileAnimator.SetBool("FadeOut", true);
+            transform.localScale = Vector3.Lerp(startingScale, targetScale, time / scaleSpeed);
+            time += Time.deltaTime;
+            yield return null;
         }
+        transform.localScale = targetScale;
+        projectileAnimator.SetBool("FadeOut", true);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
