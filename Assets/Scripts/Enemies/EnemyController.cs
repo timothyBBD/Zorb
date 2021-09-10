@@ -9,7 +9,6 @@ public class EnemyController : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D collider)
     {
-        Debug.Log(collider.gameObject.tag);
         if (collider.gameObject.tag == "PlayerBullet")
         {
             var damage = collider.gameObject.GetComponent<PlayerBullet>().damage;

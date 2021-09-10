@@ -17,20 +17,58 @@ public class StatsBar : MonoBehaviour
     private float ROUNDED_BAR_PERCENTAGE = 1 / 3f;
     private float STRAIGHT_BAR_PERCENTAGE = 2 / 3f;
 
-    private float maxStrength = 100f;
-    private float maxAgility = 100f;
-    private float maxHealth = 100f;
+    public float maxStrength;
+    public float maxAgility;
+    public float maxHealth;
 
-    private float health = 90f;
-    private float strength = 100f;
-    private float agility = 100f;
+    private float health;
+    private float strength;
+    private float agility;
+
+    public float Health
+    {
+        get => health;
+        set
+        {
+            health = value;
+            fillHealthBar();
+        }
+    }
+    public float Strength
+    {
+        get => strength;
+        set
+        {
+            strength = value;
+            fillStrengthBar();
+        }
+    }
+    public float Agility
+    {
+        get => agility;
+        set
+        {
+            agility = value;
+            fillAgilityBar();
+        }
+    }
+
+    private int RoundUp(int toRound)
+    {
+        if (toRound % 10 == 0) return toRound;
+        return (10 - toRound % 10) + toRound;
+    }
 
     private void fillHealthBar()
     {
-        int healthInterval = (int)health - (int)health % 10;
-        int healthImageArray = (healthInterval / 10) + 1;
+        if (health <= 0)
+        {
+            healthBar.GetComponent<Image>().sprite = healthStates[0];
+            return;
+        }
 
-        if (healthImageArray < 0) { return; }
+        float healthInterval = RoundUp((int)Health);
+        int healthImageArray = (int)healthInterval / 10;
 
         healthBar.GetComponent<Image>().sprite = healthStates[healthImageArray];
     }
@@ -47,64 +85,25 @@ public class StatsBar : MonoBehaviour
 
     private void fillStrengthBar()
     {
-        fillRoundedBar(agilityBar, agilityRoundedBar, strength, maxStrength);
+        fillRoundedBar(agilityBar, agilityRoundedBar, Strength, maxStrength);
     }
 
     private void fillAgilityBar()
     {
-        fillRoundedBar(strengthBar, strengthRoundedBar, agility, maxAgility);
+        fillRoundedBar(strengthBar, strengthRoundedBar, Agility, maxAgility);
     }
 
-    public void increaseStrength(float amountToIncrease)
+    public void initializeStats(float health, float agility, float strength, float maxHealth, float maxStrength, float maxAgility)
     {
-        if (amountToIncrease + strength >= maxStrength)
-        {
-            strength += amountToIncrease;
-            agility -= amountToIncrease;
-            fillStrengthBar();
-            fillAgilityBar();
-        }
-        
-    }
-
-    public void increaseAgility(float amountToIncrease)
-    {
-        if (amountToIncrease + agility >= maxAgility)
-        {
-            agility += amountToIncrease;
-            strength -= amountToIncrease;
-            fillStrengthBar();
-            fillAgilityBar();
-        }
-    }
-
-    public void increaseHealth(float amountToIncrease)
-    {
-        if (amountToIncrease + health > maxHealth)
-        {
-            health += amountToIncrease;
-            fillHealthBar();
-        }
-    }
-
-    public void decreaseHealth(float amountToDecrease)
-    {
-        health -= amountToDecrease;
-        fillHealthBar();
-
-        if (health <= 0)
-        {
-            throw new NotImplementedException("Do death");
-        }
-    }
-
-    public void initializeStats(float health, float agility, float strength,float maxHealth, float maxStrength, float maxAgility)
-    {
-        this.health = health;
-        this.strength = strength;
-        this.agility = agility;
+        Health = health;
+        Strength = strength;
+        Agility = agility;
         this.maxStrength = maxStrength;
         this.maxAgility = maxAgility;
         this.maxHealth = maxHealth;
+
+        fillAgilityBar();
+        fillStrengthBar();
+        fillHealthBar();
     }
 }
