@@ -16,8 +16,8 @@ GameObject:
   - component: {fileID: 442479711561060393}
   - component: {fileID: 8815252598824866969}
   m_Layer: 6
-  m_Name: EnemyBullet
-  m_TagString: EnemyAttack
+  m_Name: SlimeBullet
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

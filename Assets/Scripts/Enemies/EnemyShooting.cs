@@ -30,7 +30,7 @@ public class EnemyShooting : MonoBehaviour
     {
         Quaternion bulletRotation = Quaternion.FromToRotation(Vector3.up, new Vector3(direction.x, direction.y));
         Rigidbody2D bulletClone = (Rigidbody2D) Instantiate(bullet, transform.position, bulletRotation);
-        bulletClone.velocity = direction * bulletSpeed;
+        bulletClone.velocity = direction.normalized * bulletSpeed;
     }
 
     public void ConeFire(Vector2 direction)
