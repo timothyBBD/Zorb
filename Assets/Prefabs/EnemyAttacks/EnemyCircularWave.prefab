@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: -9118233382058362903}
   m_Layer: 0
   m_Name: EnemyCircularWave
-  m_TagString: Untagged
+  m_TagString: EnemyAttack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

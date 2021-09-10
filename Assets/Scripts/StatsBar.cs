@@ -34,7 +34,8 @@ public class StatsBar : MonoBehaviour
             fillHealthBar();
         }
     }
-    public float Strength { 
+    public float Strength
+    {
         get => strength;
         set
         {
@@ -42,7 +43,8 @@ public class StatsBar : MonoBehaviour
             fillStrengthBar();
         }
     }
-    public float Agility { 
+    public float Agility
+    {
         get => agility;
         set
         {
@@ -59,11 +61,14 @@ public class StatsBar : MonoBehaviour
 
     private void fillHealthBar()
     {
+        if (health <= 0)
+        {
+            healthBar.GetComponent<Image>().sprite = healthStates[0];
+            return;
+        }
+
         float healthInterval = RoundUp((int)Health);
-
         int healthImageArray = (int)healthInterval / 10;
-
-        if (healthImageArray < 0) { return; }
 
         healthBar.GetComponent<Image>().sprite = healthStates[healthImageArray];
     }

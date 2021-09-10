@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    private float strength = 100f;
-    private float agility = 100f;
-    private float health = 100f;
-    private float MAX_STAT = 100f;
-    private float MIN_STAT = 0f;
+    public float strength = 100f;
+    public float agility = 100f;
+    public float health = 100f;
+    public float MAX_STAT = 100f;
+    public float MIN_STAT = 0f;
     public StatsBar statsBar;
 
     public float MaxDamageReduction = 70f;
@@ -16,6 +16,24 @@ public class PlayerController : MonoBehaviour
     public void Start()
     {
         statsBar.initializeStats(health, agility,strength, MAX_STAT, MAX_STAT, MAX_STAT);
+    }
+
+    public void OnTriggerEnter2D(Collider2D collider)
+    {
+        Debug.Log(collider.gameObject.name);
+        if (collider.gameObject.tag == "EnemyAttack")
+        {
+            switch (collider.gameObject.name)
+            {
+                case "EnemyBullet(Clone)":
+                    float damage = collider.gameObject.GetComponent<EnemyBulletProjectile>().bulletDamage;
+                    TakeDamage(damage);
+                    break;
+                default:
+                    break;
+            }
+        }
+        
     }
 
     public void IncreaseAgility(float agilityIncrease)

@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 8815252598824866969}
   m_Layer: 6
   m_Name: EnemyBullet
-  m_TagString: Untagged
+  m_TagString: EnemyAttack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -150,6 +150,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fe45f2f287107f45af1314a64538b58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeToLive: 5
 --- !u!95 &8815252598824866969
 Animator:
   serializedVersion: 3
