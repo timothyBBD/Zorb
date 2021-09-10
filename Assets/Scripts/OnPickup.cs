@@ -4,33 +4,27 @@ using UnityEngine;
 
 public class OnPickup : MonoBehaviour
 {
-    string playerTag = "Player";
     PlayerController playerController;
     GameObject player;
-
-    public enum FavorType
-    {
-        Stength,
-        Agility,
-    }
 
     public FavorType favors = FavorType.Stength;
     public float favorAmount = 0f;
 
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag(playerTag);
+        player = GameObject.FindGameObjectWithTag("Player");
         playerController = player.GetComponent<PlayerController>();
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    void OnTriggerEnter2D(Collider2D collider)
     {
-        if(collision.gameObject.tag.Equals(playerTag))
+        if (collider.gameObject.tag == "PlayerCollider")
         {
-            if(favors == FavorType.Agility)
+            if (favors == FavorType.Agility)
             {
                 playerController.IncreaseAgility(favorAmount);
-            } else
+            }
+            else
             {
                 playerController.IncreaseStrength(favorAmount);
             }

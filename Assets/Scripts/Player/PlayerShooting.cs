@@ -15,20 +15,41 @@ public class PlayerShooting : MonoBehaviour
     public Camera mainCam;
     public ParticleSystem shootParticles;
     public Animator shootAnimator;
-
     private PlayerControls controls;
+    private PlayerController playerController;
+
+
+    //Stats 
+    private Stat ShotDamage;
+    private Stat FireRate;
+    private Stat ShotSpeed;
+    private Stat ShotSize;
 
     private void Awake()
     {
         controls = new PlayerControls();
         controls.Player.Fire.performed += _ => canFire = !canFire;
-
-
         controls.Enable();
+    }
+
+    private void OnDisable()
+    {
+        controls.Disable();
+    }
+
+    private void Start()
+    {
+        playerController = gameObject.GetComponent<PlayerController>();
+        ShotDamage = playerController.getStat(StatType.ShotDamage);
+        ShotSpeed = playerController.getStat(StatType.ShotSpeed);
+        ShotSize = playerController.getStat(StatType.ShotSize);
+        FireRate = playerController.getStat(StatType.FireRate);
     }
 
     private void Update()
     {
+        if (playerController.isDead)
+            return;
         TimeFireRate();
         FireInput();
     }
@@ -47,8 +68,10 @@ public class PlayerShooting : MonoBehaviour
 
         GameObject shot = Instantiate<GameObject>(playerBulletPrefab, shootPoint.position, Quaternion.identity) as GameObject;
         Rigidbody2D rbShot = shot.GetComponent<Rigidbody2D>();
-        rbShot.velocity = shootAxis.right * shootSpeed;
-        fireRateCountdown = fireRate;
+        shot.GetComponent<PlayerBullet>().damage = ShotDamage.currentValue;
+        shot.transform.localScale = new Vector3(ShotSize.currentValue, ShotSize.currentValue, 1);
+        rbShot.velocity = shootAxis.right * ShotSpeed.currentValue;
+        fireRateCountdown = FireRate.currentValue;
         shootParticles.Play();
         shootAnimator.SetTrigger("shoot");
         shootAnimator.SetBool("isShooting", true);

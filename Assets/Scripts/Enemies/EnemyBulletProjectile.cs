@@ -4,8 +4,8 @@ using UnityEngine;
 public class EnemyBulletProjectile : MonoBehaviour
 {
     PlayerController player;
+    PlayerMovement playerMovement;
     string playerTag = "Player";
-    string[] collisionTags = new string[] { "PlayerCollider" };
 
     public float bulletDamage = 5f;
     public float bulletSpeed = 3f;
@@ -13,17 +13,20 @@ public class EnemyBulletProjectile : MonoBehaviour
     void Start()
     {
         player = GameObject.FindGameObjectWithTag(playerTag).GetComponent<PlayerController>();
+        playerMovement = player.gameObject.GetComponent<PlayerMovement>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         string collisionTag = collision.gameObject.tag;
-        if (Array.Exists(collisionTags, tag => tag == collisionTag))
+        if (collisionTag == "PlayerCollider" && !playerMovement.isDashing)
         {
-            if (collisionTag == "PlayerCollider")
-            {
-                player.TakeDamage(bulletDamage);
-            }
+            player.TakeDamage(bulletDamage);
+            Destroy(gameObject);
+        }
+
+        if (collisionTag == "Obstacles")
+        {
             Destroy(gameObject);
         }
     }

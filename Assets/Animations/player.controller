@@ -55,25 +55,25 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 8311831765995290886}
-    m_Position: {x: 600, y: 140, z: 0}
+    m_Position: {x: 670, y: 150, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 7757297493689160830}
     m_Position: {x: 1060, y: 310, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -1650355735156201437}
-    m_Position: {x: -100, y: 390, z: 0}
+    m_Position: {x: -80, y: 350, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 2754099952658551065}
     m_Position: {x: 210, y: -110, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 7862009752632362853}
-    m_Position: {x: 220, y: 450, z: 0}
+    m_Position: {x: 220, y: 420, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 6235984766980595491}
     m_Position: {x: -180, y: 140, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -1444721770193986235}
-    m_Position: {x: 560, y: 400, z: 0}
+    m_Position: {x: 510, y: 390, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 4827432049968026612}
     m_Position: {x: -40, y: -40, z: 0}
@@ -97,13 +97,16 @@ AnimatorStateMachine:
     m_Position: {x: 220, y: 660, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 4089342851675388479}
-    m_Position: {x: 890, y: 560, z: 0}
+    m_Position: {x: 840, y: 610, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -341734547575717575}
     m_Position: {x: -390, y: 540, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -1059233251699471047}
     m_Position: {x: -530, y: 140, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: -8165123502459063661}
+    m_Position: {x: 630, y: 260, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions:
   - {fileID: 3435519156874787102}
@@ -114,8 +117,8 @@ AnimatorStateMachine:
   - {fileID: 1133474026762437969}
   - {fileID: -7842551370222800076}
   - {fileID: -233393278296179345}
-  - {fileID: -6307314005493331602}
   - {fileID: -7171133376934445167}
+  - {fileID: -990751033774516298}
   m_EntryTransitions: []
   m_StateMachineTransitions: {}
   m_StateMachineBehaviours: []
@@ -124,6 +127,32 @@ AnimatorStateMachine:
   m_ExitPosition: {x: -790, y: 190, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
   m_DefaultState: {fileID: 7757297493689160830}
+--- !u!1102 &-8165123502459063661
+AnimatorState:
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Player_Death
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: 7400000, guid: 26e5a524c01378f4d9e6bf3b34f9c015, type: 2}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
 --- !u!1101 &-7847366080420006785
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -163,11 +192,11 @@ AnimatorStateTransition:
   - m_ConditionMode: 4
     m_ConditionEvent: angle
     m_EventTreshold: 170
-  - m_ConditionMode: 3
-    m_ConditionEvent: velocity
-    m_EventTreshold: 0.1
   - m_ConditionMode: 2
     m_ConditionEvent: isShooting
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: isDead
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 4827432049968026612}
@@ -252,6 +281,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 2
     m_ConditionEvent: isShooting
     m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: isDead
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 6235984766980595491}
   m_Solo: 0
@@ -260,34 +292,6 @@ AnimatorStateTransition:
   serializedVersion: 3
   m_TransitionDuration: 0
   m_TransitionOffset: 0.32608712
-  m_ExitTime: 1.0760868
-  m_HasExitTime: 0
-  m_HasFixedDuration: 1
-  m_InterruptionSource: 0
-  m_OrderedInterruption: 1
-  m_CanTransitionToSelf: 0
---- !u!1101 &-6307314005493331602
-AnimatorStateTransition:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  m_Conditions:
-  - m_ConditionMode: 2
-    m_ConditionEvent: isShooting
-    m_EventTreshold: 0
-  - m_ConditionMode: 4
-    m_ConditionEvent: velocity
-    m_EventTreshold: 0.1
-  m_DstStateMachine: {fileID: 0}
-  m_DstState: {fileID: 7757297493689160830}
-  m_Solo: 0
-  m_Mute: 0
-  m_IsExit: 0
-  serializedVersion: 3
-  m_TransitionDuration: 0
-  m_TransitionOffset: 0.2459018
   m_ExitTime: 1.0760868
   m_HasExitTime: 0
   m_HasFixedDuration: 1
@@ -330,11 +334,11 @@ AnimatorStateTransition:
   - m_ConditionMode: 4
     m_ConditionEvent: angle
     m_EventTreshold: 9
-  - m_ConditionMode: 3
-    m_ConditionEvent: velocity
-    m_EventTreshold: 0.1
   - m_ConditionMode: 2
     m_ConditionEvent: isShooting
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: isDead
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 8311831765995290886}
@@ -532,6 +536,31 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
+--- !u!1101 &-990751033774516298
+AnimatorStateTransition:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_Conditions:
+  - m_ConditionMode: 1
+    m_ConditionEvent: isDead
+    m_EventTreshold: 0
+  m_DstStateMachine: {fileID: 0}
+  m_DstState: {fileID: -8165123502459063661}
+  m_Solo: 0
+  m_Mute: 0
+  m_IsExit: 0
+  serializedVersion: 3
+  m_TransitionDuration: 0
+  m_TransitionOffset: 0.48387143
+  m_ExitTime: 1.0760868
+  m_HasExitTime: 0
+  m_HasFixedDuration: 1
+  m_InterruptionSource: 0
+  m_OrderedInterruption: 1
+  m_CanTransitionToSelf: 0
 --- !u!1101 &-970842632362231172
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -620,12 +649,12 @@ AnimatorStateTransition:
   - m_ConditionMode: 4
     m_ConditionEvent: angle
     m_EventTreshold: 80
-  - m_ConditionMode: 3
-    m_ConditionEvent: velocity
-    m_EventTreshold: 0.1
   - m_ConditionMode: 2
     m_ConditionEvent: isShooting
     m_EventTreshold: 0.1
+  - m_ConditionMode: 2
+    m_ConditionEvent: isDead
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -121510899372279300}
   m_Solo: 0
@@ -681,25 +710,31 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: velocity
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: shoot
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: isShooting
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
+  - m_Name: isDead
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -774,11 +809,11 @@ AnimatorStateTransition:
   - m_ConditionMode: 4
     m_ConditionEvent: angle
     m_EventTreshold: -10
-  - m_ConditionMode: 3
-    m_ConditionEvent: velocity
-    m_EventTreshold: 0.1
   - m_ConditionMode: 2
     m_ConditionEvent: isShooting
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: isDead
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -1444721770193986235}
@@ -808,11 +843,11 @@ AnimatorStateTransition:
   - m_ConditionMode: 4
     m_ConditionEvent: angle
     m_EventTreshold: -81
-  - m_ConditionMode: 3
-    m_ConditionEvent: velocity
-    m_EventTreshold: 0.1
   - m_ConditionMode: 2
     m_ConditionEvent: isShooting
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: isDead
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 7862009752632362853}
@@ -946,11 +981,11 @@ AnimatorStateTransition:
   - m_ConditionMode: 4
     m_ConditionEvent: angle
     m_EventTreshold: -100
-  - m_ConditionMode: 3
-    m_ConditionEvent: velocity
-    m_EventTreshold: 0.1
   - m_ConditionMode: 2
     m_ConditionEvent: isShooting
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: isDead
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -1650355735156201437}
@@ -980,11 +1015,11 @@ AnimatorStateTransition:
   - m_ConditionMode: 4
     m_ConditionEvent: angle
     m_EventTreshold: 99
-  - m_ConditionMode: 3
-    m_ConditionEvent: velocity
-    m_EventTreshold: 0.1
   - m_ConditionMode: 2
     m_ConditionEvent: isShooting
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: isDead
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 2754099952658551065}
@@ -1118,11 +1153,8 @@ AnimatorStateTransition:
   - m_ConditionMode: 4
     m_ConditionEvent: angle
     m_EventTreshold: 181
-  - m_ConditionMode: 3
-    m_ConditionEvent: velocity
-    m_EventTreshold: 0.1
   - m_ConditionMode: 2
-    m_ConditionEvent: isShooting
+    m_ConditionEvent: isDead
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 6235984766980595491}

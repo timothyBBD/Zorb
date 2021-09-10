@@ -10,8 +10,6 @@ public class CameraFollow : MonoBehaviour
     public float smoothSpeed;
     public float screenBoxPercentage;
 
-    private bool isFollowing = false;
-
     private void FixedUpdate()
     {
         Follow();

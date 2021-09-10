@@ -35,7 +35,7 @@ Transform:
   m_GameObject: {fileID: 1405647824614999476}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -4.1, y: 0.12, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 1}
   m_Children:
   - {fileID: 1405647824921155623}
   m_Father: {fileID: 0}
@@ -78,8 +78,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1491254781
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: b6f68002631198d488bad2bfa7d107c6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -195,9 +195,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 605972cd4d2d9244896c6b9fe2925e27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detectionRange: 3.45
-  alwaysChase: 0
-  fireType: 0
+  detectionRange: 5
+  alwaysChase: 1
+  fireType: 1
   fireRate: 0.5
 --- !u!114 &1405647824614999484
 MonoBehaviour:
@@ -212,7 +212,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletDamage: 5
-  bulletSpeed: 3
+  bulletSpeed: 2
 --- !u!95 &1405647824614999483
 Animator:
   serializedVersion: 3
@@ -270,7 +270,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e96d7880d66ee14496862160106378e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 40
+  health: 50
 --- !u!1 &1405647824921155640
 GameObject:
   m_ObjectHideFlags: 0
