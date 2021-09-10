@@ -3,7 +3,7 @@ using Pathfinding;
 using System.Reflection;
 using System.Collections;
 
-public class EnemyAI : MonoBehaviour
+public abstract class EnemyAI : MonoBehaviour
 {
     public enum FireType
     {
@@ -12,20 +12,19 @@ public class EnemyAI : MonoBehaviour
         Radial
     }
     
-    EnemyShooting enemyShooting;
     GameObject player;
-    GameObject weapon;
-    Animator weaponAnimator;
     AIPath pathfinding;
-    bool isFiring = false;
+
+    protected EnemyShooting enemyShooting;
+    protected bool isFiring = false;
+    protected float countDownTillNextShot = 0f;
 
     public float detectionRange = 10f;
     public bool alwaysChase = true;
     public FireType fireType = FireType.Single;
     public float fireRate = 3f;
-    float countDownTillNextShot = 0f;
 
-    Vector2 getDirectionToPlayer()
+    protected Vector2 getDirectionToPlayer()
     {
         Vector2 playerPosition = new Vector2(player.transform.position.x, player.transform.position.y);
         Vector2 enemyPosition = new Vector2(transform.position.x, transform.position.y);
@@ -40,12 +39,10 @@ public class EnemyAI : MonoBehaviour
         return distance <= detectionRange;
     }
 
-    void Awake()
+    protected virtual void Awake()
     {
         enemyShooting = GetComponent<EnemyShooting>();
         pathfinding = GetComponent<AIPath>();
-        weapon = gameObject.transform.GetChild(0).gameObject;
-        weaponAnimator = weapon.GetComponent<Animator>();
     }
 
     void Start()
@@ -71,28 +68,12 @@ public class EnemyAI : MonoBehaviour
             countDownTillNextShot -= Time.deltaTime;
             if(countDownTillNextShot <= 0 && !isFiring)
             {
-                StartCoroutine(AnimateWeaponChargeUpAndFire());
+                attackPlayer();
             }
         }
     }
 
-    IEnumerator AnimateWeaponChargeUpAndFire()
-    {
-        isFiring = true;
-        weaponAnimator.SetBool("isShooting", true);
-        yield return new WaitForSeconds(0.35f);
-        weaponAnimator.SetBool("isShooting", false);
-        Fire();
-    }
-
-    void Fire()
-    {
-        isFiring = false;
-        countDownTillNextShot = fireRate;
-        string fireTypeName = fireType.ToString() + "Fire";
-        MethodInfo fireMethod = typeof(EnemyShooting).GetMethod(fireTypeName);
-        fireMethod.Invoke(enemyShooting, new object[] { getDirectionToPlayer() });
-    }
+    protected abstract void attackPlayer();
 
 
 }
