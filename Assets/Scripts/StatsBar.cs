@@ -25,12 +25,6 @@ public class StatsBar : MonoBehaviour
     private float strength = 100f;
     private float agility = 100f;
 
-    private void Update()
-    {
-        health--;
-        fillHealthBar();
-    }
-
     private void fillHealthBar()
     {
         int healthInterval = (int)health - (int)health % 10;
