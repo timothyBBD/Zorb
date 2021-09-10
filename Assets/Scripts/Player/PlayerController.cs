@@ -1,77 +1,104 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
+
+
+public enum FavorType
+{
+    Stength,
+    Agility,
+}
+
+public enum StatType
+{
+    MovementSpeed, FireRate, DashSpeed, ShotSpeed, DashTime, DamageReduction, ShotDamage, ShotSize
+}
+
+[Serializable]
+public class Stat
+{
+    public StatType statType;
+    public FavorType favorType;
+    public float minValue;
+    public float maxValue;
+    public float currentValue;
+
+
+}
 
 public class PlayerController : MonoBehaviour
 {
-    public float strength = 100f;
-    public float agility = 100f;
-    public float health = 100f;
-    public float MAX_STAT = 100f;
-    public float MIN_STAT = 0f;
-    public StatsBar statsBar;
+    public float strength;
+    public float agility;
+    public float health;
+    public GameObject healthSliderObj;
+    private Slider healthSlider;
 
-    public float MaxDamageReduction = 70f;
+    [SerializeField] private List<Stat> affectedStats;
+    const float MAX_PERCENTAGE = 100f;
+    public bool isDead;
+    public Animator animator;
+    private PlayerMovement playerMovement;
 
-    public void Start()
+
+    private void Start()
     {
-        statsBar.initializeStats(health, agility,strength, MAX_STAT, MAX_STAT, MAX_STAT);
+        playerMovement = gameObject.GetComponent<PlayerMovement>();
+        UpdateStats();
     }
 
-    public void OnTriggerEnter2D(Collider2D collider)
+    private void UpdateStats()
     {
-        Debug.Log(collider.gameObject.name);
-        if (collider.gameObject.tag == "EnemyAttack")
+        affectedStats.ForEach(stat =>
         {
-            switch (collider.gameObject.name)
+            if (stat.favorType == FavorType.Stength)
             {
-                case "EnemyBullet(Clone)":
-                    float damage = collider.gameObject.GetComponent<EnemyBulletProjectile>().bulletDamage;
-                    TakeDamage(damage);
-                    break;
-                default:
-                    break;
+                stat.currentValue = Mathf.Lerp(stat.minValue, stat.maxValue, strength / MAX_PERCENTAGE);
             }
-        }
-        
+            else
+            {
+                stat.currentValue = Mathf.Lerp(stat.minValue, stat.maxValue, agility / MAX_PERCENTAGE);
+            }
+        });
     }
+
 
     public void IncreaseAgility(float agilityIncrease)
     {
-        if (agility + agilityIncrease <= MAX_STAT)
+        if (agility + agilityIncrease <= MAX_PERCENTAGE)
         {
             agility += agilityIncrease;
             strength -= agilityIncrease;
-            statsBar.Agility = agility;
-            statsBar.Strength = strength;
         }
+        UpdateStats();
+
     }
 
     public void IncreaseStrength(float strengthIncrease)
     {
-        if (strength + strengthIncrease <= MAX_STAT)
+        if (strength + strengthIncrease <= MAX_PERCENTAGE)
         {
             strength += strengthIncrease;
             agility -= strengthIncrease;
-            statsBar.Agility = agility;
-            statsBar.Strength = strength;
         }
+        UpdateStats();
+    }
+    public Stat getStat(StatType statType)
+    {
+        return affectedStats.Find(stat => stat.statType == statType);
     }
 
     public void TakeDamage(float amount)
     {
-        float damageReduced = amount * ((MaxDamageReduction/100) * (strength / MAX_STAT));
-        float actualDamage = amount - damageReduced;
-
-        health -= actualDamage;
-
-        statsBar.Health = health;
-
-        Debug.Log(health);
-
+        if (playerMovement.isDashing)
+            return;
+        var damageReduction = getStat(StatType.DamageReduction);
+        health -= amount - (amount * ((damageReduction.currentValue / 100f) * (strength / MAX_PERCENTAGE)));
         if (health <= 0)
         {
-            Die();
+            isDead = true;
+            animator.SetBool("isDead", true);
         }
     }
 

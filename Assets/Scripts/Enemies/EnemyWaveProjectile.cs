@@ -12,7 +12,7 @@ public class EnemyWaveProjectile : EnemyBulletProjectile
 
     void Awake()
     {
-        projectileAnimator = GetComponent<Animator>();    
+        projectileAnimator = GetComponent<Animator>();
     }
 
     void Start()
@@ -33,18 +33,6 @@ public class EnemyWaveProjectile : EnemyBulletProjectile
         }
         transform.localScale = targetScale;
         projectileAnimator.SetBool("FadeOut", true);
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        string collisionTag = collision.gameObject.tag;
-        if (Array.Exists(collisionTags, tag => tag == collisionTag))
-        {
-            if (collisionTag == "PlayerCollider")
-            {
-                player.TakeDamage(bulletDamage);
-            }
-        }
     }
 
 }
