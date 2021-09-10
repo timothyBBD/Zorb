@@ -198,7 +198,7 @@ MonoBehaviour:
   detectionRange: 5
   alwaysChase: 1
   fireType: 1
-  fireRate: 0.5
+  fireRate: 2
 --- !u!114 &1405647824614999484
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -212,7 +212,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletDamage: 5
-  bulletSpeed: 2
+  bulletSpeed: 0.3
 --- !u!95 &1405647824614999483
 Animator:
   serializedVersion: 3
