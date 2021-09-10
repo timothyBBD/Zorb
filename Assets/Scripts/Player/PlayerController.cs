@@ -4,13 +4,19 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float strength;
-    public float agility;
-    public float health;
-    public float MAX_STAT = 100f;
-    public float MIN_STAT = 0f;
+    private float strength = 100f;
+    private float agility = 100f;
+    private float health = 100f;
+    private float MAX_STAT = 100f;
+    private float MIN_STAT = 0f;
+    public StatsBar statsBar;
 
     public float MaxDamageReduction = 70f;
+
+    public void Start()
+    {
+        statsBar.initializeStats(health, agility,strength, MAX_STAT, MAX_STAT, MAX_STAT);
+    }
 
     public void IncreaseAgility(float agilityIncrease)
     {
@@ -18,6 +24,8 @@ public class PlayerController : MonoBehaviour
         {
             agility += agilityIncrease;
             strength -= agilityIncrease;
+            statsBar.Agility = agility;
+            statsBar.Strength = strength;
         }
     }
 
@@ -27,15 +35,30 @@ public class PlayerController : MonoBehaviour
         {
             strength += strengthIncrease;
             agility -= strengthIncrease;
+            statsBar.Agility = agility;
+            statsBar.Strength = strength;
         }
     }
 
     public void TakeDamage(float amount)
     {
-        health -= amount - (amount * MaxDamageReduction * strength / MAX_STAT);
+        float damageReduced = amount * ((MaxDamageReduction/100) * (strength / MAX_STAT));
+        float actualDamage = amount - damageReduced;
+
+        health -= actualDamage;
+
+        statsBar.Health = health;
+
+        Debug.Log(health);
+
         if (health <= 0)
         {
-            Destroy(gameObject);
+            Die();
         }
+    }
+
+    private void Die()
+    {
+        Destroy(gameObject);
     }
 }
