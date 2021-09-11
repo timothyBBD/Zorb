@@ -116,7 +116,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletDamage: 10
-  bulletSpeed: 2
+  bulletSpeed: 4
   targetScale: {x: 0.6, y: 0.6, z: 0.6}
   startingScale: {x: 0, y: 0, z: 0}
   scaleSpeed: 0.2

@@ -270,7 +270,7 @@ MonoBehaviour:
   detectionRange: 10
   alwaysChase: 1
   fireType: 0
-  fireRate: 3
+  fireRate: 1
 --- !u!50 &662586278
 Rigidbody2D:
   serializedVersion: 4

@@ -12,7 +12,6 @@ public abstract class EnemyAI : MonoBehaviour
         Radial
     }
     
-    GameObject player;
     AIPath pathfinding;
     AIDestinationSetter destinationSetter;
     
@@ -20,6 +19,8 @@ public abstract class EnemyAI : MonoBehaviour
     protected EnemyShooting enemyShooting;
     protected bool isFiring = false;
     protected float countDownTillNextShot = 0f;
+    protected GameObject player;
+
 
     public float detectionRange = 10f;
     public bool alwaysChase = true;

@@ -6,6 +6,7 @@ using UnityEngine;
 public class CrabAI : EnemyAI
 {
     Animator enemyAnimator;
+    float distanceToPlayerBeforeFire = 3f;
 
     protected override void Awake()
     {
@@ -15,7 +16,10 @@ public class CrabAI : EnemyAI
 
     protected override void attackPlayer()
     {
-        StartCoroutine(AnimateWeaponChargeUpAndFire());
+        if (isCloseEnoughToPlayer())
+        {
+            StartCoroutine(AnimateWeaponChargeUpAndFire());
+        }
     }
 
     IEnumerator AnimateWeaponChargeUpAndFire()
@@ -34,5 +38,12 @@ public class CrabAI : EnemyAI
         string fireTypeName = fireType.ToString() + "Fire";
         MethodInfo fireMethod = typeof(EnemyShooting).GetMethod(fireTypeName);
         fireMethod.Invoke(enemyShooting, new object[] { getDirectionToPlayer() });
+    }
+
+    bool isCloseEnoughToPlayer()
+    {
+        Vector2 playerPos = new Vector2(player.transform.position.x, player.transform.position.y);
+        Vector2 enemyPos = new Vector2(transform.position.x, transform.position.y);
+        return Vector2.Distance(playerPos, enemyPos) <= distanceToPlayerBeforeFire;
     }
 }
