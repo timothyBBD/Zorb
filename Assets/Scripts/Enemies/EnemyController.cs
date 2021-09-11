@@ -14,9 +14,12 @@ public class EnemyController : MonoBehaviour
     AIPath pathfinding;
     EnemyAI enemyAI;
 
+    Color originalColor;
+
     void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        originalColor = spriteRenderer.color;
         enemyAnimator = GetComponent<Animator>();
         pathfinding = GetComponent<AIPath>();
         enemyAI = GetComponent<EnemyAI>();
@@ -76,12 +79,13 @@ public class EnemyController : MonoBehaviour
 
     void FlashRed()
     {
+
         spriteRenderer.color = Color.red;
         Invoke("ResetColor", 0.1f);
     }
     void ResetColor()
     {
-        spriteRenderer.color = Color.white;
+        spriteRenderer.color = originalColor;
     }
 
 }
