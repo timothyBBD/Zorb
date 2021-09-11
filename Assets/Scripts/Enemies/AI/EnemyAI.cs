@@ -14,6 +14,8 @@ public abstract class EnemyAI : MonoBehaviour
     
     GameObject player;
     AIPath pathfinding;
+    AIDestinationSetter destinationSetter;
+    
 
     protected EnemyShooting enemyShooting;
     protected bool isFiring = false;
@@ -43,11 +45,13 @@ public abstract class EnemyAI : MonoBehaviour
     {
         enemyShooting = GetComponent<EnemyShooting>();
         pathfinding = GetComponent<AIPath>();
+        destinationSetter = GetComponent<AIDestinationSetter>();
     }
 
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");   
+        player = GameObject.FindGameObjectWithTag("Player");
+        destinationSetter.target = player.transform;
     }
 
     void Update()
