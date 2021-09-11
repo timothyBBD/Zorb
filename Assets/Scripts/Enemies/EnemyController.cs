@@ -1,10 +1,12 @@
 using Pathfinding;
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class EnemyController : MonoBehaviour
 {
     public float health;
+    public HealthBar healthBar;
 
     SpriteRenderer spriteRenderer;
     float fadeSpeed = 1f;
@@ -18,6 +20,10 @@ public class EnemyController : MonoBehaviour
         enemyAnimator = GetComponent<Animator>();
         pathfinding = GetComponent<AIPath>();
         enemyAI = GetComponent<EnemyAI>();
+    }
+
+    void Start(){
+        healthBar.SetMaxHealth(health);
     }
 
     public void OnTriggerEnter2D(Collider2D collider)
@@ -38,13 +44,26 @@ public class EnemyController : MonoBehaviour
     private void TakeDamage(float damage)
     {
         health -= damage;
+        healthBar.SetHealth(health);
         if (health <= 0)
         {
-            pathfinding.enabled = false;
-            enemyAI.enabled = false;
+            Transform healthBarTransform = GetChildrenByTag("EnemyHealthBar")[0];
+            Destroy(healthBarTransform.gameObject);
+            Destroy(pathfinding);
+            Destroy(enemyAI);
             enemyAnimator.SetBool("IsDead", true);
             StartCoroutine(FadeOutAndDestroy());
         }
+    }
+
+    private List<Transform> GetChildrenByTag(string tag) {
+        List<Transform> children = new List<Transform>();
+        foreach(Transform t in transform) {
+            if(t.tag == tag) {
+                children.Add(t);
+            }
+        }
+        return children;
     }
 
     IEnumerator FadeOutAndDestroy()
