@@ -44,10 +44,12 @@ public class EnemyController : MonoBehaviour
 
     private void TakeDamage(float damage)
     {
+        FlashRed();
         health -= damage;
         healthBar.SetHealth(health);
         if (health <= 0)
         {
+            Destroy(GetComponent<Collider2D>());
             Destroy(pathfinding);
             Destroy(enemyAI);
             foreach (Transform t in transform)
@@ -72,5 +74,14 @@ public class EnemyController : MonoBehaviour
         Destroy(gameObject);
     }
 
+    void FlashRed()
+    {
+        spriteRenderer.color = Color.red;
+        Invoke("ResetColor", 0.1f);
+    }
+    void ResetColor()
+    {
+        spriteRenderer.color = Color.white;
+    }
 
 }
