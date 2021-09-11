@@ -11,10 +11,10 @@ public abstract class EnemyAI : MonoBehaviour
         Cone,
         Radial
     }
-    
+
     AIPath pathfinding;
     AIDestinationSetter destinationSetter;
-    
+
 
     protected EnemyShooting enemyShooting;
     protected bool isFiring = false;
@@ -68,17 +68,17 @@ public abstract class EnemyAI : MonoBehaviour
         {
             pathfinding.canSearch = IsPlayerDetected();
         }
-        if(pathfinding.canSearch)
+        if (pathfinding.canSearch)
         {
             countDownTillNextShot -= Time.deltaTime;
-            if(countDownTillNextShot <= 0 && !isFiring)
+            if (countDownTillNextShot <= 0 && !isFiring)
             {
-                attackPlayer();
+                AttackPlayer();
             }
         }
     }
 
-    protected abstract void attackPlayer();
+    protected abstract void AttackPlayer();
 
 
 }

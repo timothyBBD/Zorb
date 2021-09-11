@@ -14,7 +14,7 @@ public class JellyfishAI : EnemyAI
         enemyAnimator = GetComponent<Animator>();
     }
 
-    protected override void attackPlayer()
+    protected override void AttackPlayer()
     {
         StartCoroutine(AnimateWeaponChargeUpAndFire());
     }

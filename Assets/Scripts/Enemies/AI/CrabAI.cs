@@ -14,7 +14,7 @@ public class CrabAI : EnemyAI
         enemyAnimator = GetComponent<Animator>();
     }
 
-    protected override void attackPlayer()
+    protected override void AttackPlayer()
     {
         if (isCloseEnoughToPlayer())
         {

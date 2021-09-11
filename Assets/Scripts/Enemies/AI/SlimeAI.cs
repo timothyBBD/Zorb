@@ -15,7 +15,7 @@ public class SlimeAI : EnemyAI
         weaponAnimator = weapon.GetComponent<Animator>();
     }
 
-    protected override void attackPlayer()
+    protected override void AttackPlayer()
     {
         StartCoroutine(AnimateWeaponChargeUpAndFire());
     }
