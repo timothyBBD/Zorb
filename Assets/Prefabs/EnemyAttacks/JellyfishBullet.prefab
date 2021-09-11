@@ -138,6 +138,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletDamage: 20
   bulletSpeed: 3
+  destroySprite: {fileID: 21300000, guid: c9ce4fa69b94d4047b717af3e6cc66c8, type: 3}
 --- !u!114 &442479711561060393
 MonoBehaviour:
   m_ObjectHideFlags: 0

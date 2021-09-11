@@ -11,13 +11,16 @@ public abstract class EnemyAI : MonoBehaviour
         Cone,
         Radial
     }
-    
-    GameObject player;
+
     AIPath pathfinding;
+    AIDestinationSetter destinationSetter;
+
 
     protected EnemyShooting enemyShooting;
     protected bool isFiring = false;
     protected float countDownTillNextShot = 0f;
+    protected GameObject player;
+
 
     public float detectionRange = 10f;
     public bool alwaysChase = true;
@@ -43,11 +46,13 @@ public abstract class EnemyAI : MonoBehaviour
     {
         enemyShooting = GetComponent<EnemyShooting>();
         pathfinding = GetComponent<AIPath>();
+        destinationSetter = GetComponent<AIDestinationSetter>();
     }
 
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");   
+        player = GameObject.FindGameObjectWithTag("Player");
+        destinationSetter.target = player.transform;
     }
 
     void Update()
@@ -63,17 +68,17 @@ public abstract class EnemyAI : MonoBehaviour
         {
             pathfinding.canSearch = IsPlayerDetected();
         }
-        if(pathfinding.canSearch)
+        if (pathfinding.canSearch)
         {
             countDownTillNextShot -= Time.deltaTime;
-            if(countDownTillNextShot <= 0 && !isFiring)
+            if (countDownTillNextShot <= 0 && !isFiring)
             {
-                attackPlayer();
+                AttackPlayer();
             }
         }
     }
 
-    protected abstract void attackPlayer();
+    protected abstract void AttackPlayer();
 
 
 }

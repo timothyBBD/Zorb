@@ -12,11 +12,11 @@ GameObject:
   - component: {fileID: 5460961211753592643}
   - component: {fileID: 6471769579065263154}
   - component: {fileID: 6617406381125079700}
-  - component: {fileID: 3565122256905990495}
-  - component: {fileID: 6941469882858911956}
-  - component: {fileID: -9118233382058362903}
+  - component: {fileID: 4545325230536211136}
+  - component: {fileID: -6108743233866673686}
+  - component: {fileID: -6927665735667637655}
   m_Layer: 0
-  m_Name: EnemyCircularWave
+  m_Name: ConeShotgun
   m_TagString: EnemyAttack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 1491254781
   m_SortingLayer: 2
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: e240b7998088f414fb25ccfd9030fb85, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c3f68db0d1b7218418cf9d64d969619f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -115,12 +115,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58187861b58d75c479df65bb071e276a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletDamage: 15
-  bulletSpeed: 0
-  targetScale: {x: 3, y: 3, z: 0}
+  bulletDamage: 10
+  bulletSpeed: 4
+  targetScale: {x: 0.6, y: 0.6, z: 0.6}
   startingScale: {x: 0, y: 0, z: 0}
-  scaleSpeed: 1
---- !u!114 &3565122256905990495
+  scaleSpeed: 0.2
+--- !u!114 &4545325230536211136
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -132,8 +132,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fe45f2f287107f45af1314a64538b58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeToLive: 1.5
---- !u!50 &6941469882858911956
+  timeToLive: 1
+--- !u!50 &-6108743233866673686
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
@@ -154,7 +154,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!95 &-9118233382058362903
+--- !u!95 &-6927665735667637655
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0

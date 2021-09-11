@@ -14,12 +14,12 @@ GameObject:
   - component: {fileID: 1405647824614999487}
   - component: {fileID: 1405647824614999486}
   - component: {fileID: 1405647824614999472}
-  - component: {fileID: 1405647824614999484}
   - component: {fileID: 1405647824614999481}
   - component: {fileID: 1220895288536172730}
   - component: {fileID: 5184862235743934080}
   - component: {fileID: 2838594852867895475}
-  m_Layer: 0
+  - component: {fileID: 662586278}
+  m_Layer: 8
   m_Name: Crab
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -103,7 +103,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce3cb00db05aa534f8e5a1c2f715b82d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 2463350948630576846, guid: 81208ea4e23b8204dbe6327a89eb7d6c, type: 3}
+  bullet: {fileID: -6108743233866673686, guid: 20ddcf733e016f84e8c304a76ee17e85, type: 3}
 --- !u!114 &1405647824614999487
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -182,20 +182,6 @@ MonoBehaviour:
   slowWhenNotFacingTarget: 1
   whenCloseToDestination: 0
   constrainInsideGraph: 0
---- !u!114 &1405647824614999484
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1405647824614999476}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e09c7c3f0b8df74bb4c221cb73a6839, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletDamage: 5
-  bulletSpeed: 3
 --- !u!61 &1405647824614999481
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -269,4 +255,25 @@ MonoBehaviour:
   detectionRange: 10
   alwaysChase: 1
   fireType: 0
-  fireRate: 3
+  fireRate: 1
+--- !u!50 &662586278
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1405647824614999476}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 1
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
