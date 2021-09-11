@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 1405647824614999487}
   - component: {fileID: 1405647824614999486}
   - component: {fileID: 1405647824614999472}
-  - component: {fileID: 1405647824614999484}
   - component: {fileID: 1405647824614999481}
   - component: {fileID: 1220895288536172730}
   - component: {fileID: 5184862235743934080}
@@ -183,20 +182,6 @@ MonoBehaviour:
   slowWhenNotFacingTarget: 1
   whenCloseToDestination: 0
   constrainInsideGraph: 0
---- !u!114 &1405647824614999484
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1405647824614999476}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e09c7c3f0b8df74bb4c221cb73a6839, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletDamage: 5
-  bulletSpeed: 3
 --- !u!61 &1405647824614999481
 BoxCollider2D:
   m_ObjectHideFlags: 0

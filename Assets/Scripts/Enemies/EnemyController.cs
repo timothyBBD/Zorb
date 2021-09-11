@@ -1,10 +1,9 @@
-using System.Collections;
 using Pathfinding;
 using UnityEngine;
+using System.Collections;
 
 public class EnemyController : MonoBehaviour
 {
-
     public float health;
 
     SpriteRenderer spriteRenderer;
@@ -31,6 +30,11 @@ public class EnemyController : MonoBehaviour
         }
     }
 
+    void DestroyEnemy()
+    {
+        Destroy(gameObject);
+    }
+
     private void TakeDamage(float damage)
     {
         health -= damage;
@@ -39,11 +43,11 @@ public class EnemyController : MonoBehaviour
             pathfinding.enabled = false;
             enemyAI.enabled = false;
             enemyAnimator.SetBool("IsDead", true);
-            StartCoroutine(FadeOut());
+            StartCoroutine(FadeOutAndDestroy());
         }
     }
 
-    protected IEnumerator FadeOut()
+    IEnumerator FadeOutAndDestroy()
     {
         while (spriteRenderer.color.a >= 0)
         {
