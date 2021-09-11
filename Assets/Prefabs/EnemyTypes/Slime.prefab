@@ -198,7 +198,7 @@ MonoBehaviour:
   detectionRange: 5
   alwaysChase: 1
   fireType: 1
-  fireRate: 2
+  fireRate: 1.5
 --- !u!114 &1405647824614999484
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -211,8 +211,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e09c7c3f0b8df74bb4c221cb73a6839, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletDamage: 5
-  bulletSpeed: 0.3
+  bulletDamage: 10
+  bulletSpeed: 5
 --- !u!95 &1405647824614999483
 Animator:
   serializedVersion: 3
@@ -270,7 +270,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e96d7880d66ee14496862160106378e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 50
+  health: 100
 --- !u!1 &1405647824921155640
 GameObject:
   m_ObjectHideFlags: 0

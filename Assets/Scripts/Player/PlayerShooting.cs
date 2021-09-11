@@ -65,8 +65,10 @@ public class PlayerShooting : MonoBehaviour
     {
         if (fireRateCountdown > 0 || !canFire)
             return;
-
-        GameObject shot = Instantiate<GameObject>(playerBulletPrefab, shootPoint.position, Quaternion.identity) as GameObject;
+        Vector3 direction = shootAxis.TransformDirection(shootAxis.right);
+        Debug.Log(direction);
+        float rotation = gameObject.GetComponent<PlayerMovement>().rotation;
+        GameObject shot = Instantiate<GameObject>(playerBulletPrefab, shootPoint.position, Quaternion.Euler(0, 0, rotation)) as GameObject;
         Rigidbody2D rbShot = shot.GetComponent<Rigidbody2D>();
         shot.GetComponent<PlayerBullet>().damage = ShotDamage.currentValue;
         shot.transform.localScale = new Vector3(ShotSize.currentValue, ShotSize.currentValue, 1);

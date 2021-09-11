@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
     public float dashDuration = 0.3f;
     public Camera mainCam;
     public GameObject dashTrail;
+    public float rotation;
 
     private float dashCountdown = 0f;
     public bool isDashing = false;
@@ -58,7 +59,7 @@ public class PlayerMovement : MonoBehaviour
 
         Vector2 playerPos = mainCam.WorldToScreenPoint(transform.position);
         Vector3 rotateVector = lookVector - playerPos;
-        float rotation = Mathf.Atan2(rotateVector.y, rotateVector.x) * Mathf.Rad2Deg;
+        rotation = Mathf.Atan2(rotateVector.y, rotateVector.x) * Mathf.Rad2Deg;
         rotationAxis.rotation = Quaternion.Euler(0, 0, rotation);
         animator.SetFloat("angle", rotation);
     }
@@ -84,13 +85,6 @@ public class PlayerMovement : MonoBehaviour
             return;
         rb.velocity = movementVector * MovementSpeed.currentValue * Time.fixedDeltaTime;
         animator.SetFloat("velocity", rb.velocity.magnitude);
-    }
-    public void RotatePlayer()
-    {
-
-        float rotation = Mathf.Atan2(movementVector.y, movementVector.x) * Mathf.Rad2Deg;
-        rotationAxis.rotation = Quaternion.Euler(0, 0, rotation);
-        animator.SetFloat("angle", rotation);
     }
 
     public void MoveInput(InputAction.CallbackContext ctx)

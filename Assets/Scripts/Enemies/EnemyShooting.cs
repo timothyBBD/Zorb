@@ -11,7 +11,7 @@ public class EnemyShooting : MonoBehaviour
 
     void Start()
     {
-        bulletSpeed = bullet.gameObject.GetComponent<EnemyBulletProjectile>().bulletSpeed;   
+        bulletSpeed = bullet.gameObject.GetComponent<EnemyBulletProjectile>().bulletSpeed;
     }
 
     Vector2 Rotate(Vector2 v, float degrees)
@@ -29,7 +29,7 @@ public class EnemyShooting : MonoBehaviour
     public void SingleFire(Vector2 direction)
     {
         Quaternion bulletRotation = Quaternion.FromToRotation(Vector3.up, new Vector3(direction.x, direction.y));
-        Rigidbody2D bulletClone = (Rigidbody2D) Instantiate(bullet, transform.position, bulletRotation);
+        Rigidbody2D bulletClone = (Rigidbody2D)Instantiate(bullet, transform.position, bulletRotation);
         bulletClone.velocity = direction.normalized * bulletSpeed;
     }
 
@@ -38,19 +38,19 @@ public class EnemyShooting : MonoBehaviour
         for (int i = -1; i <= 1; i++)
         {
             Vector2 bulletDirection = Rotate(direction, i * 15f);
-            Rigidbody2D bulletClone = (Rigidbody2D) Instantiate(bullet, transform.position, Quaternion.identity);
-            bulletClone.velocity = bulletDirection * bulletSpeed;
+            Rigidbody2D bulletClone = (Rigidbody2D)Instantiate(bullet, transform.position, Quaternion.identity);
+            bulletClone.velocity = bulletDirection.normalized * bulletSpeed;
         }
     }
 
     public void RadialFire(Vector2 direction)
     {
-        for(int i = 0; i < 16; i++)
+        for (int i = 0; i < 16; i++)
         {
             Quaternion bulletRotation = Quaternion.FromToRotation(Vector3.up, new Vector3(direction.x, direction.y));
             Vector2 bulletDirection = Rotate(direction, i * (360f / 16));
-            Rigidbody2D bulletClone = (Rigidbody2D) Instantiate(bullet, transform.position, bulletRotation);
-            bulletClone.velocity = bulletDirection * bulletSpeed;
+            Rigidbody2D bulletClone = (Rigidbody2D)Instantiate(bullet, transform.position, bulletRotation);
+            bulletClone.velocity = bulletDirection.normalized * bulletSpeed;
         }
     }
 
