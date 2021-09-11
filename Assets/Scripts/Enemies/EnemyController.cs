@@ -22,7 +22,8 @@ public class EnemyController : MonoBehaviour
         enemyAI = GetComponent<EnemyAI>();
     }
 
-    void Start(){
+    void Start()
+    {
         healthBar.SetMaxHealth(health);
     }
 
@@ -47,23 +48,15 @@ public class EnemyController : MonoBehaviour
         healthBar.SetHealth(health);
         if (health <= 0)
         {
-            Transform healthBarTransform = GetChildrenByTag("EnemyHealthBar")[0];
-            Destroy(healthBarTransform.gameObject);
             Destroy(pathfinding);
             Destroy(enemyAI);
+            foreach (Transform t in transform)
+            {
+                Destroy(t.gameObject);
+            }
             enemyAnimator.SetBool("IsDead", true);
             StartCoroutine(FadeOutAndDestroy());
         }
-    }
-
-    private List<Transform> GetChildrenByTag(string tag) {
-        List<Transform> children = new List<Transform>();
-        foreach(Transform t in transform) {
-            if(t.tag == tag) {
-                children.Add(t);
-            }
-        }
-        return children;
     }
 
     IEnumerator FadeOutAndDestroy()
