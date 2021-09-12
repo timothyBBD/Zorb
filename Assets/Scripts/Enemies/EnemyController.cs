@@ -1,20 +1,18 @@
 using Pathfinding;
 using UnityEngine;
 using System.Collections;
-using System.Collections.Generic;
 
 public class EnemyController : MonoBehaviour
 {
     public float health;
-    public HealthBar healthBar;
 
     SpriteRenderer spriteRenderer;
     float fadeSpeed = 1f;
     Animator enemyAnimator;
     AIPath pathfinding;
     EnemyAI enemyAI;
-
     Color originalColor;
+    HealthBar healthBar;
 
     void Awake()
     {
@@ -27,6 +25,7 @@ public class EnemyController : MonoBehaviour
 
     void Start()
     {
+        healthBar = transform.GetChild(0).GetChild(0).GetComponent<HealthBar>();
         healthBar.SetMaxHealth(health);
     }
 
