@@ -12,14 +12,14 @@ public abstract class EnemyAI : MonoBehaviour
         Radial
     }
 
-    AIPath pathfinding;
-    AIDestinationSetter destinationSetter;
+    public AIPath pathfinding;
+    public AIDestinationSetter destinationSetter;
 
 
     protected EnemyShooting enemyShooting;
     protected bool isFiring = false;
     protected float countDownTillNextShot = 0f;
-    protected GameObject player;
+    public GameObject player;
 
 
     public float detectionRange = 10f;
@@ -44,13 +44,15 @@ public abstract class EnemyAI : MonoBehaviour
 
     protected virtual void Awake()
     {
-        enemyShooting = GetComponent<EnemyShooting>();
-        pathfinding = GetComponent<AIPath>();
-        destinationSetter = GetComponent<AIDestinationSetter>();
+        enemyShooting = gameObject.GetComponent<EnemyShooting>();
+        pathfinding = gameObject.GetComponent<AIPath>();
+        destinationSetter = gameObject.GetComponent<AIDestinationSetter>();
+
     }
 
     void Start()
     {
+        destinationSetter = gameObject.GetComponent<AIDestinationSetter>();
         player = GameObject.FindGameObjectWithTag("Player");
         destinationSetter.target = player.transform;
     }

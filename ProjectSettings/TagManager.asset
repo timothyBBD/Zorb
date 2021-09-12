@@ -9,6 +9,7 @@ TagManager:
   - PlayerBullet
   - EnemyAttack
   - PlayerCollider
+  - Obstacles
   layers:
   - Default
   - TransparentFX

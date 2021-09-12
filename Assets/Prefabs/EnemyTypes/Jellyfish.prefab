@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 1220895288536172730}
   - component: {fileID: 3576754058471420690}
   - component: {fileID: 1150925522}
+  - component: {fileID: 1405647824614999484}
   m_Layer: 8
   m_Name: Jellyfish
   m_TagString: Enemy
@@ -194,24 +195,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b5d83565d8034b488eb5547dc0d4616, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pathfinding: {fileID: 0}
+  destinationSetter: {fileID: 0}
+  player: {fileID: 0}
   detectionRange: 4.58
   alwaysChase: 1
   fireType: 0
   fireRate: 0.5
---- !u!114 &1405647824614999484
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1405647824614999476}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e09c7c3f0b8df74bb4c221cb73a6839, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletDamage: 20
-  bulletSpeed: 8
 --- !u!61 &1405647824614999481
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -250,7 +240,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e96d7880d66ee14496862160106378e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 40
+  health: 20
 --- !u!95 &3576754058471420690
 Animator:
   serializedVersion: 3
@@ -291,3 +281,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &1405647824614999484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1405647824614999476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e09c7c3f0b8df74bb4c221cb73a6839, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletDamage: 25
+  bulletSpeed: 20
+  destroySprite: {fileID: 0}

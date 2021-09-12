@@ -1,7 +1,8 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
+using UnityEngine.UI;
+using TMPro;
 
 
 public enum FavorType
@@ -27,11 +28,44 @@ public class Stat
 
 }
 
+
+[Serializable]
+public class HealthBarState
+{
+    public float fillPercentageMin;
+    public float fillPercentageMax;
+    public float healthMin;
+    public float healthMax;
+    public Image stateImage;
+
+    public void SetHealth(float health)
+    {
+        if (health < healthMin)
+        {
+            health = healthMin;
+        }
+        if (health > healthMax)
+        {
+            health = healthMax;
+        }
+        float healthDiff = healthMax - healthMin;
+        float healthPercentage = (health - healthMin) / healthDiff;
+        stateImage.fillAmount = Mathf.Lerp(fillPercentageMin, fillPercentageMax, healthPercentage);
+
+    }
+}
+
 public class PlayerController : MonoBehaviour
 {
     public float strength;
     public float agility;
     public float health;
+    // UI Elements
+    public TMP_Text armourText;
+
+    public Image agilityBar;
+    public Image strengthBar;
+    public List<HealthBarState> healthBarStates;
     public GameObject healthSliderObj;
     private Slider healthSlider;
 
@@ -50,6 +84,8 @@ public class PlayerController : MonoBehaviour
 
     private void UpdateStats()
     {
+        agilityBar.fillAmount = agility / 100f;
+        strengthBar.fillAmount = strength / 100f;
         affectedStats.ForEach(stat =>
         {
             if (stat.favorType == FavorType.Stength)
@@ -61,6 +97,7 @@ public class PlayerController : MonoBehaviour
                 stat.currentValue = Mathf.Lerp(stat.minValue, stat.maxValue, agility / MAX_PERCENTAGE);
             }
         });
+        armourText.text = getStat(StatType.DamageReduction).currentValue.ToString() + "%";
     }
 
 
@@ -95,6 +132,7 @@ public class PlayerController : MonoBehaviour
             return;
         var damageReduction = getStat(StatType.DamageReduction);
         health -= amount - (amount * ((damageReduction.currentValue / 100f) * (strength / MAX_PERCENTAGE)));
+        healthBarStates.ForEach(state => state.SetHealth(health));
         if (health <= 0)
         {
             isDead = true;

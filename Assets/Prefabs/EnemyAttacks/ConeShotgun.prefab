@@ -117,6 +117,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletDamage: 10
   bulletSpeed: 4
+  destroySprite: {fileID: 0}
   targetScale: {x: 0.6, y: 0.6, z: 0.6}
   startingScale: {x: 0, y: 0, z: 0}
   scaleSpeed: 0.2
@@ -132,7 +133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fe45f2f287107f45af1314a64538b58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeToLive: 1
+  timeToLive: 3
 --- !u!50 &-6108743233866673686
 Rigidbody2D:
   serializedVersion: 4

@@ -617,6 +617,24 @@ MonoBehaviour:
   strength: 50
   agility: 50
   health: 100
+  agilityBar: {fileID: 0}
+  strengthBar: {fileID: 0}
+  healthBarStates:
+  - fillPercentageMin: 0.25
+    fillPercentageMax: 0.85
+    healthMin: 50
+    healthMax: 100
+    stateImage: {fileID: 0}
+  - fillPercentageMin: 0.61
+    fillPercentageMax: 1
+    healthMin: 20
+    healthMax: 50
+    stateImage: {fileID: 0}
+  - fillPercentageMin: 0
+    fillPercentageMax: 1
+    healthMin: 0
+    healthMax: 20
+    stateImage: {fileID: 0}
   healthSliderObj: {fileID: 0}
   affectedStats:
   - statType: 0
@@ -631,8 +649,8 @@ MonoBehaviour:
     currentValue: 0
   - statType: 2
     favorType: 1
-    minValue: 15
-    maxValue: 40
+    minValue: 10
+    maxValue: 30
     currentValue: 0
   - statType: 6
     favorType: 0

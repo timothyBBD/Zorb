@@ -137,7 +137,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletDamage: 20
-  bulletSpeed: 3
+  bulletSpeed: 10
   destroySprite: {fileID: 21300000, guid: 1cd0d07c2a17181438ffe47884c3a504, type: 3}
 --- !u!114 &442479711561060393
 MonoBehaviour:

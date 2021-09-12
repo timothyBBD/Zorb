@@ -220,7 +220,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e96d7880d66ee14496862160106378e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 40
+  health: 200
 --- !u!95 &5184862235743934080
 Animator:
   serializedVersion: 3
@@ -252,6 +252,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1aa178bf689dff4ba28e7dd6471974b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pathfinding: {fileID: 0}
+  destinationSetter: {fileID: 0}
+  player: {fileID: 0}
   detectionRange: 10
   alwaysChase: 1
   fireType: 0
