@@ -12,6 +12,8 @@ TagManager:
   - Obstacles
   - EnemyHealthBar
   - GunPart
+  - GunPart_0
+  - GunParts
   layers:
   - Default
   - TransparentFX
