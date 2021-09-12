@@ -104,7 +104,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce3cb00db05aa534f8e5a1c2f715b82d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: -6108743233866673686, guid: 20ddcf733e016f84e8c304a76ee17e85, type: 3}
+  bullet: {fileID: 6941469882858911956, guid: bc3369f88d4dbf844a979bfaad887070, type: 3}
 --- !u!114 &1405647824614999487
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -165,7 +165,7 @@ MonoBehaviour:
   repathRate: 0.5
   canSearch: 0
   canMove: 1
-  maxSpeed: 3
+  maxSpeed: 5
   gravity: {x: 0, y: 0, z: 0}
   groundMask:
     serializedVersion: 2
@@ -221,7 +221,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e96d7880d66ee14496862160106378e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 200
+  health: 150
 --- !u!95 &5184862235743934080
 Animator:
   serializedVersion: 3
@@ -256,8 +256,8 @@ MonoBehaviour:
   pathfinding: {fileID: 0}
   destinationSetter: {fileID: 0}
   player: {fileID: 0}
-  detectionRange: 15
-  alwaysChase: 1
+  detectionRange: 10
+  alwaysChase: 0
   fireType: 0
   fireRate: 1.5
 --- !u!50 &662586278

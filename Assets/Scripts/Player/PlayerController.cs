@@ -125,6 +125,16 @@ public class PlayerController : MonoBehaviour
         return affectedStats.Find(stat => stat.statType == statType);
     }
 
+    public void GainHealth(float amount)
+    {
+        if (health >= MAX_PERCENTAGE)
+            return;
+        health += amount;
+        health = Mathf.Clamp(health, 0f, 100f);
+        healthBarStates.ForEach(state => state.SetHealth(health));
+    }
+
+
     public void TakeDamage(float amount)
     {
         if (playerMovement.isDashing)
@@ -140,7 +150,8 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void Respawn() {
+    void Respawn()
+    {
         GameState.DeathCount++;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }

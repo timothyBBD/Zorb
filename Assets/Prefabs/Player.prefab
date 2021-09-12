@@ -622,7 +622,7 @@ MonoBehaviour:
   agilityBar: {fileID: 0}
   strengthBar: {fileID: 0}
   healthBarStates:
-  - fillPercentageMin: 0.24
+  - fillPercentageMin: 0.23
     fillPercentageMax: 0.85
     healthMin: 50
     healthMax: 100

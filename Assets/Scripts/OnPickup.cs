@@ -32,7 +32,7 @@ public class OnPickup : MonoBehaviour
             {
                 playerController.IncreaseStrength(favorAmount);
             }
-            playerController.TakeDamage(-health);
+            playerController.GainHealth(health);
             audioSource.PlayOneShot(pickUpSound);
             Destroy(gameObject);
         }
