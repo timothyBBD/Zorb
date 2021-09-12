@@ -26,9 +26,4 @@ public class Fading : MonoBehaviour
         return fadeSpeed;
     }
 
-    void Start()
-    {
-        BeginFade(-1);
-    }
-
 }
