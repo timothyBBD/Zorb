@@ -11,9 +11,7 @@ TagManager:
   - PlayerCollider
   - Obstacles
   - EnemyHealthBar
-  - GunPart_0
-  - GunPart_1
-  - GunPart_2
+  - GunPart
   layers:
   - Default
   - TransparentFX

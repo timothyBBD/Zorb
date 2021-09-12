@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class PlayerColisions : MonoBehaviour
 {
+    string GunPartTag = "GunPart";
+
     private void OnTriggerEnter2D(Collider2D other) {
+        GameObject collidedObject = other.gameObject;
         string collisionTag = other.gameObject.tag;
-        if(collisionTag.Contains("GunPart")){
-            int partId = collisionTag[collisionTag.Length - 1];
+        if(collisionTag == GunPartTag){
+            int partId = collidedObject.GetComponent<GunPart>().id;
             GameState.PartsCollected[partId] = true;
         }
     }
