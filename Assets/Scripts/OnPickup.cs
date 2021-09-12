@@ -11,7 +11,7 @@ public class OnPickup : MonoBehaviour
     public float favorAmount = 0f;
     public float health;
     public AudioSource audioSource;
-    public AudioClip shootSound;
+    public AudioClip pickUpSound;
 
     void Start()
     {
@@ -33,7 +33,7 @@ public class OnPickup : MonoBehaviour
                 playerController.IncreaseStrength(favorAmount);
             }
             playerController.TakeDamage(-health);
-            audioSource.PlayOneShot(shootSound);
+            audioSource.PlayOneShot(pickUpSound);
             Destroy(gameObject);
         }
     }

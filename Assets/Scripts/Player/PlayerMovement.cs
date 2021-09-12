@@ -24,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
 
     private PlayerControls controls;
 
+
     //Stats 
     private Stat MovementSpeed;
     private Stat DashSpeed;
@@ -123,6 +124,7 @@ public class PlayerMovement : MonoBehaviour
         isDashing = true;
         dashCountdown = dashRate;
         dashTrail.SetActive(true);
+        audioSource.pitch = Random.Range(0.8f, 1.2f);
         audioSource.PlayOneShot(dashSound);
 
     }

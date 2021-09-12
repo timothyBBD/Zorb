@@ -78,6 +78,7 @@ public class PlayerShooting : MonoBehaviour
         rbShot.velocity = shootAxis.right * ShotSpeed.currentValue;
         fireRateCountdown = FireRate.currentValue;
         shootParticles.Play();
+        audioSource.pitch = Random.Range(0.8f, 1.2f);
         audioSource.PlayOneShot(shootSound);
         shootAnimator.SetTrigger("shoot");
         shootAnimator.SetBool("isShooting", true);
