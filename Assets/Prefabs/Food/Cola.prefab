@@ -98,7 +98,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   favors: 0
   favorAmount: 5
-  health: 2
+  health: 5
   audioSource: {fileID: 0}
   pickUpSound: {fileID: 8300000, guid: 1f46dc30bfc3f0d4396e16844f75f89d, type: 3}
 --- !u!58 &3538711134104671051

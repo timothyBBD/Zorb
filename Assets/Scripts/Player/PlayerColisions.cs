@@ -11,6 +11,8 @@ public class PlayerColisions : MonoBehaviour
         string collisionTag = other.gameObject.tag;
         if(collisionTag == GunPartTag){
             int partId = collidedObject.GetComponent<GunPart>().id;
+            GameObject gunPartsUI = GameObject.FindGameObjectWithTag("GunParts");
+            gunPartsUI.transform.GetChild(partId).gameObject.SetActive(true);
             GameState.PartsCollected[partId] = true;
         }
     }
