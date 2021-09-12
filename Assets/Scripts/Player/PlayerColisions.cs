@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerColisions : MonoBehaviour
 {
@@ -16,6 +17,29 @@ public class PlayerColisions : MonoBehaviour
             GameObject gunPartsUI = GameObject.FindGameObjectWithTag("GunPartsUI");
             gunPartsUI.transform.GetChild(partId).gameObject.SetActive(true);
             GameState.PartsCollected[partId] = true;
+            if(ShouldEndGame(GameState.PartsCollected)) {
+                StartCoroutine(EndGame());
+            }
         }
     }
+
+    private bool ShouldEndGame(bool[] partsCollected)
+    {
+        foreach (bool collected in partsCollected)
+        {
+            if (!collected)
+                return false;
+        }
+        return true;
+    }
+
+
+    IEnumerator EndGame()
+    {
+        yield return new WaitForSeconds(2f);
+        float fadeTime = GameObject.FindObjectOfType<Fading>().BeginFade(1);
+        yield return new WaitForSeconds(fadeTime);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
 }
