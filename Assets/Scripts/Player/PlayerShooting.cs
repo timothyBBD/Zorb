@@ -17,6 +17,8 @@ public class PlayerShooting : MonoBehaviour
     public Animator shootAnimator;
     private PlayerControls controls;
     private PlayerController playerController;
+    private AudioSource audioSource;
+    public AudioClip shootSound;
 
 
     //Stats 
@@ -28,6 +30,7 @@ public class PlayerShooting : MonoBehaviour
     private void Awake()
     {
         controls = new PlayerControls();
+        audioSource = GetComponent<AudioSource>();
         controls.Player.Fire.performed += _ => canFire = !canFire;
         controls.Enable();
     }
@@ -75,6 +78,7 @@ public class PlayerShooting : MonoBehaviour
         rbShot.velocity = shootAxis.right * ShotSpeed.currentValue;
         fireRateCountdown = FireRate.currentValue;
         shootParticles.Play();
+        audioSource.PlayOneShot(shootSound);
         shootAnimator.SetTrigger("shoot");
         shootAnimator.SetBool("isShooting", true);
     }

@@ -15,7 +15,8 @@ public class PlayerMovement : MonoBehaviour
     public Camera mainCam;
     public GameObject dashTrail;
     public float rotation;
-
+    private AudioSource audioSource;
+    public AudioClip dashSound;
     private float dashCountdown = 0f;
     public bool isDashing = false;
     private Vector2 preDashVelocity;
@@ -39,6 +40,7 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         rb = gameObject.GetComponent<Rigidbody2D>();
+        audioSource = GetComponent<AudioSource>();
         playerController = gameObject.GetComponent<PlayerController>();
         DashSpeed = playerController.getStat(StatType.DashSpeed);
         MovementSpeed = playerController.getStat(StatType.MovementSpeed);
@@ -121,6 +123,7 @@ public class PlayerMovement : MonoBehaviour
         isDashing = true;
         dashCountdown = dashRate;
         dashTrail.SetActive(true);
+        audioSource.PlayOneShot(dashSound);
 
     }
 

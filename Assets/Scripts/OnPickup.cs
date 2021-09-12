@@ -9,11 +9,15 @@ public class OnPickup : MonoBehaviour
 
     public FavorType favors = FavorType.Stength;
     public float favorAmount = 0f;
+    public float health;
+    public AudioSource audioSource;
+    public AudioClip shootSound;
 
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         playerController = player.GetComponent<PlayerController>();
+        audioSource = player.GetComponent<AudioSource>();
     }
 
     void OnTriggerEnter2D(Collider2D collider)
@@ -28,6 +32,8 @@ public class OnPickup : MonoBehaviour
             {
                 playerController.IncreaseStrength(favorAmount);
             }
+            playerController.TakeDamage(-health);
+            audioSource.PlayOneShot(shootSound);
             Destroy(gameObject);
         }
     }
