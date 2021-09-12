@@ -495,6 +495,14 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3611840546498566057, guid: 5e066e1b090217b4ca76a2038000586f, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: -3.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 3611840546498566057, guid: 5e066e1b090217b4ca76a2038000586f, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 1.54
+      objectReference: {fileID: 0}
     - target: {fileID: 4488312810337949811, guid: 5e066e1b090217b4ca76a2038000586f, type: 3}
       propertyPath: m_Name
       value: Health Bar

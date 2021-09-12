@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 
@@ -74,8 +75,6 @@ public class PlayerController : MonoBehaviour
     public bool isDead;
     public Animator animator;
     private PlayerMovement playerMovement;
-
-
     private void Start()
     {
         playerMovement = gameObject.GetComponent<PlayerMovement>();
@@ -137,7 +136,13 @@ public class PlayerController : MonoBehaviour
         {
             isDead = true;
             animator.SetBool("isDead", true);
+            Invoke("Respawn", 5f);
         }
+    }
+
+    void Respawn() {
+        GameState.DeathCount++;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     private void Die()
