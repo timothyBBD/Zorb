@@ -1,11 +1,8 @@
 using UnityEngine;
-using System.ComponentModel;
 
 public static class GameState
 {
-    [DefaultValue(0)]
-    public static int DeathCount {get;set;}
+    public static int DeathCount { get; set; } = 0;
 
-    [DefaultValue(new bool[] {false, false, false})]
-    public static bool[] PartsCollected {get;set;}
+    public static bool[] PartsCollected { get; set; } = new bool[] { false, false, false };
 }
