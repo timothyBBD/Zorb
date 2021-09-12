@@ -4,15 +4,11 @@ using UnityEngine;
 
 public class PlayerColisions : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+    private void OnTriggerEnter2D(Collider2D other) {
+        string collisionTag = other.gameObject.tag;
+        if(collisionTag.Contains("GunPart")){
+            int partId = collisionTag[collisionTag.Length - 1];
+            GameState.PartsCollected[partId] = true;
+        }
     }
 }

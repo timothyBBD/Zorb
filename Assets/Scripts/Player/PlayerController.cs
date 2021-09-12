@@ -141,6 +141,7 @@ public class PlayerController : MonoBehaviour
     }
 
     void Respawn() {
+        GameState.DeathCount++;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
