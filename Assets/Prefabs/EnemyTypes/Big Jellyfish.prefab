@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -2376387526398465976, guid: 6243d892584156f44a6d5b2210b39ec5, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: bdb265908d1e2d748bfc938540c65e03, type: 3}
     - target: {fileID: 608612495800281317, guid: 6243d892584156f44a6d5b2210b39ec5, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -19,6 +23,18 @@ PrefabInstance:
       propertyPath: health
       value: 250
       objectReference: {fileID: 0}
+    - target: {fileID: 1220895288536172730, guid: 6243d892584156f44a6d5b2210b39ec5, type: 3}
+      propertyPath: maxPitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1220895288536172730, guid: 6243d892584156f44a6d5b2210b39ec5, type: 3}
+      propertyPath: minPitch
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1220895288536172730, guid: 6243d892584156f44a6d5b2210b39ec5, type: 3}
+      propertyPath: deathSound
+      value: 
+      objectReference: {fileID: 8300000, guid: bdb265908d1e2d748bfc938540c65e03, type: 3}
     - target: {fileID: 1405647824614999474, guid: 6243d892584156f44a6d5b2210b39ec5, type: 3}
       propertyPath: m_RootOrder
       value: 0

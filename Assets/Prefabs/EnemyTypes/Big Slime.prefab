@@ -11,6 +11,14 @@ PrefabInstance:
       propertyPath: health
       value: 250
       objectReference: {fileID: 0}
+    - target: {fileID: 1220895288536172730, guid: fd614c4ddbfac934dbdc6271c9439672, type: 3}
+      propertyPath: maxPitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1220895288536172730, guid: fd614c4ddbfac934dbdc6271c9439672, type: 3}
+      propertyPath: minPitch
+      value: 0.6
+      objectReference: {fileID: 0}
     - target: {fileID: 1405647824614999473, guid: fd614c4ddbfac934dbdc6271c9439672, type: 3}
       propertyPath: bullet
       value: 
@@ -166,6 +174,10 @@ PrefabInstance:
     - target: {fileID: 3611840545834696538, guid: fd614c4ddbfac934dbdc6271c9439672, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0.0000019073486
+      objectReference: {fileID: 0}
+    - target: {fileID: 3915608539098370610, guid: fd614c4ddbfac934dbdc6271c9439672, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7633659129420044377, guid: fd614c4ddbfac934dbdc6271c9439672, type: 3}
       propertyPath: m_SizeDelta.x
