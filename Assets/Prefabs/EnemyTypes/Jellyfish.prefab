@@ -241,12 +241,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e96d7880d66ee14496862160106378e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< HEAD
   health: 20
-=======
-  health: 40
-  healthBar: {fileID: 9176609475501929810}
->>>>>>> 810490e60653d0f42b302591d2eb036c44ce159b
 --- !u!95 &3576754058471420690
 Animator:
   serializedVersion: 3
@@ -287,23 +282,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
-<<<<<<< HEAD
---- !u!114 &1405647824614999484
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1405647824614999476}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e09c7c3f0b8df74bb4c221cb73a6839, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletDamage: 25
-  bulletSpeed: 20
-  destroySprite: {fileID: 0}
-=======
 --- !u!1001 &4210280711764868940
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -421,4 +399,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96d4e1a2113d5bd45a49685d2ca9497f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
->>>>>>> 810490e60653d0f42b302591d2eb036c44ce159b
