@@ -657,12 +657,12 @@ MonoBehaviour:
   - statType: 6
     favorType: 0
     minValue: 5
-    maxValue: 40
+    maxValue: 50
     currentValue: 0
   - statType: 5
     favorType: 0
     minValue: 0
-    maxValue: 60
+    maxValue: 80
     currentValue: 0
   - statType: 4
     favorType: 0
@@ -681,6 +681,7 @@ MonoBehaviour:
     currentValue: 0
   isDead: 0
   animator: {fileID: 618430514807496539}
+  hitNoise: {fileID: 0}
 --- !u!114 &618430514953025401
 MonoBehaviour:
   m_ObjectHideFlags: 0

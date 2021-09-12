@@ -11,7 +11,7 @@ public class LoadLevel : MonoBehaviour
     private void Awake()
     {
         StartCoroutine(FadeIn());
-        gunParts = GameObject.FindGameObjectWithTag("GunParts");
+        gunParts = GameObject.FindGameObjectWithTag("GunPartsUI");
         for (int i = 0; i < GameState.PartsCollected.Length; i++)
         {
             gunParts.transform.GetChild(i).gameObject.SetActive(GameState.PartsCollected[i]);

@@ -6,12 +6,14 @@ public class PlayerColisions : MonoBehaviour
 {
     string GunPartTag = "GunPart";
 
-    private void OnTriggerEnter2D(Collider2D other) {
+    private void OnTriggerEnter2D(Collider2D other)
+    {
         GameObject collidedObject = other.gameObject;
         string collisionTag = other.gameObject.tag;
-        if(collisionTag == GunPartTag){
+        if (collisionTag == GunPartTag)
+        {
             int partId = collidedObject.GetComponent<GunPart>().id;
-            GameObject gunPartsUI = GameObject.FindGameObjectWithTag("GunParts");
+            GameObject gunPartsUI = GameObject.FindGameObjectWithTag("GunPartsUI");
             gunPartsUI.transform.GetChild(partId).gameObject.SetActive(true);
             GameState.PartsCollected[partId] = true;
         }
