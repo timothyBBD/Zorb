@@ -25,7 +25,7 @@ public class EnemyController : MonoBehaviour
 
     void Start()
     {
-        healthBar = transform.GetChild(0).GetChild(0).GetComponent<HealthBar>();
+        healthBar = GetComponentInChildren<HealthBar>();
         healthBar.SetMaxHealth(health);
     }
 
