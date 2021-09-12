@@ -482,6 +482,7 @@ MonoBehaviour:
   mainCam: {fileID: 0}
   dashTrail: {fileID: 618430514795074752}
   rotation: 0
+  dashSound: {fileID: 0}
   isDashing: 0
 --- !u!50 &618430514953025396
 Rigidbody2D:
@@ -617,10 +618,11 @@ MonoBehaviour:
   strength: 50
   agility: 50
   health: 100
+  armourText: {fileID: 0}
   agilityBar: {fileID: 0}
   strengthBar: {fileID: 0}
   healthBarStates:
-  - fillPercentageMin: 0.25
+  - fillPercentageMin: 0.24
     fillPercentageMax: 0.85
     healthMin: 50
     healthMax: 100
@@ -699,6 +701,7 @@ MonoBehaviour:
   mainCam: {fileID: 0}
   shootParticles: {fileID: 618430515055270548}
   shootAnimator: {fileID: 618430514807496539}
+  shootSound: {fileID: 0}
 --- !u!1 &618430515055270546
 GameObject:
   m_ObjectHideFlags: 0

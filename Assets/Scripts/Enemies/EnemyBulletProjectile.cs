@@ -19,7 +19,7 @@ public class EnemyBulletProjectile : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
-    void Start()
+    protected virtual void Start()
     {
         player = GameObject.FindGameObjectWithTag(playerTag).GetComponent<PlayerController>();
         playerMovement = player.gameObject.GetComponent<PlayerMovement>();
@@ -27,11 +27,12 @@ public class EnemyBulletProjectile : MonoBehaviour
 
     protected void OnTriggerEnter2D(Collider2D collision)
     {
-        if(bulletDestroyed) {
+        if (bulletDestroyed)
+        {
             return;
         }
         string collisionTag = collision.gameObject.tag;
-        if (collisionTag == "PlayerCollider" && !playerMovement.isDashing )
+        if (collisionTag == "PlayerCollider" && !playerMovement.isDashing)
         {
             player.TakeDamage(bulletDamage);
             DestroyBullet();
@@ -44,7 +45,7 @@ public class EnemyBulletProjectile : MonoBehaviour
     }
 
 
-    void DestroyBullet()
+    protected virtual void DestroyBullet()
     {
 
         GetComponent<Animator>().enabled = false;

@@ -15,10 +15,16 @@ public class EnemyWaveProjectile : EnemyBulletProjectile
         projectileAnimator = GetComponent<Animator>();
     }
 
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         transform.localScale = startingScale;
         StartCoroutine(LerpFunction());
+    }
+
+    protected override void DestroyBullet()
+    {
+        // Do Nothing Intentionally
     }
 
     IEnumerator LerpFunction()

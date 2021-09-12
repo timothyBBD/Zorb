@@ -11,12 +11,12 @@ GameObject:
   - component: {fileID: 1405647824614999474}
   - component: {fileID: 1405647824614999475}
   - component: {fileID: 1405647824614999473}
+  - component: {fileID: 1220895288536172730}
+  - component: {fileID: 1405647824614999485}
   - component: {fileID: 1405647824614999487}
   - component: {fileID: 1405647824614999486}
   - component: {fileID: 1405647824614999472}
-  - component: {fileID: 1405647824614999485}
   - component: {fileID: 1405647824614999481}
-  - component: {fileID: 1220895288536172730}
   - component: {fileID: 3576754058471420690}
   - component: {fileID: 1150925522}
   m_Layer: 8
@@ -105,6 +105,38 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 2463350948630576846, guid: 5bcdc6c5daf0614438da6b8663dc7adb, type: 3}
+--- !u!114 &1220895288536172730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1405647824614999476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e96d7880d66ee14496862160106378e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 30
+--- !u!114 &1405647824614999485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1405647824614999476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b5d83565d8034b488eb5547dc0d4616, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pathfinding: {fileID: 0}
+  destinationSetter: {fileID: 0}
+  player: {fileID: 0}
+  detectionRange: 10
+  alwaysChase: 1
+  fireType: 0
+  fireRate: 1
 --- !u!114 &1405647824614999487
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -183,25 +215,6 @@ MonoBehaviour:
   slowWhenNotFacingTarget: 1
   whenCloseToDestination: 0
   constrainInsideGraph: 0
---- !u!114 &1405647824614999485
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1405647824614999476}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b5d83565d8034b488eb5547dc0d4616, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pathfinding: {fileID: 0}
-  destinationSetter: {fileID: 0}
-  player: {fileID: 0}
-  detectionRange: 4.58
-  alwaysChase: 1
-  fireType: 0
-  fireRate: 0.5
 --- !u!61 &1405647824614999481
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -228,19 +241,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.6, y: 4.53}
   m_EdgeRadius: 0
---- !u!114 &1220895288536172730
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1405647824614999476}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e96d7880d66ee14496862160106378e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 20
 --- !u!95 &3576754058471420690
 Animator:
   serializedVersion: 3

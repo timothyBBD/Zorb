@@ -64,6 +64,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3538711134104671045, guid: c0ab2a4d3cf6ec64f9c81d3b34da6856, type: 3}
+      propertyPath: health
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 3538711134104671045, guid: c0ab2a4d3cf6ec64f9c81d3b34da6856, type: 3}
       propertyPath: favorAmount
       value: 30
       objectReference: {fileID: 0}
