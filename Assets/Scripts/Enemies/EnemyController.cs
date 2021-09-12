@@ -5,6 +5,10 @@ using System.Collections;
 public class EnemyController : MonoBehaviour
 {
     public float health;
+    public AudioClip deathSound;
+
+    public float maxPitch;
+    public float minPitch;
 
     SpriteRenderer spriteRenderer;
     float fadeSpeed = 1f;
@@ -13,6 +17,7 @@ public class EnemyController : MonoBehaviour
     EnemyAI enemyAI;
     Color originalColor;
     HealthBar healthBar;
+    AudioSource audioSource;
 
     void Awake()
     {
@@ -21,6 +26,7 @@ public class EnemyController : MonoBehaviour
         enemyAnimator = GetComponent<Animator>();
         pathfinding = GetComponent<AIPath>();
         enemyAI = GetComponent<EnemyAI>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Start()
@@ -50,9 +56,12 @@ public class EnemyController : MonoBehaviour
         healthBar.SetHealth(health);
         if (health <= 0)
         {
+            
             Destroy(GetComponent<Collider2D>());
             Destroy(pathfinding);
             Destroy(enemyAI);
+            audioSource.pitch = Random.Range(minPitch, maxPitch);
+            audioSource.PlayOneShot(deathSound);
             foreach (Transform t in transform)
             {
                 Destroy(t.gameObject);

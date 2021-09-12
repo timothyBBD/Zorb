@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -78,6 +79,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         playerMovement = gameObject.GetComponent<PlayerMovement>();
+
         UpdateStats();
     }
 
@@ -146,14 +148,17 @@ public class PlayerController : MonoBehaviour
         {
             isDead = true;
             animator.SetBool("isDead", true);
-            Invoke("Respawn", 5f);
+            StartCoroutine(Respawn());
         }
     }
 
-    void Respawn()
+    IEnumerator Respawn()
     {
         GameState.DeathCount++;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        yield return new WaitForSeconds(2f);
+        float fadeTime = GameObject.FindObjectOfType<Fading>().BeginFade(1);
+        yield return new WaitForSeconds(fadeTime);
+        SceneManager.LoadScene("game design");
     }
 
     private void Die()

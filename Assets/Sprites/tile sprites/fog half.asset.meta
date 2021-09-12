@@ -1,8 +1,15 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Sprites/tile sprites/fog half.asset.meta
 guid: cd1b0aeec36344e2ab6fb8691843bc2e
 NativeFormatImporter:
   externalObjects: {}
   mainObjectFileID: 11400000
+=======
+guid: d95f8470d0fa38143a3f91a78e6c27be
+folderAsset: yes
+DefaultImporter:
+  externalObjects: {}
+>>>>>>> ff82e5de107263e4b69b8ed1702d1ad020e4c9b5:Assets/Animations/GunPart.meta
   userData: 
   assetBundleName: 
   assetBundleVariant: 
