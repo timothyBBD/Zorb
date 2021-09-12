@@ -6,12 +6,15 @@ public class PlayerBullet : MonoBehaviour
 {
     public float damage;
     public Sprite destroySprite;
+    public AudioClip hitNoise;
+    private AudioSource audioSource;
 
     SpriteRenderer spriteRenderer;
     float fadeSpeed = 1.5f;
 
     private void Awake()
     {
+        audioSource = GetComponent<AudioSource>();
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
@@ -19,6 +22,7 @@ public class PlayerBullet : MonoBehaviour
     {
         if (collider.gameObject.tag == "Obstacles" || collider.gameObject.tag == "Enemy")
         {
+            audioSource.PlayOneShot(hitNoise);
             DestroyBullet();
         }
     }

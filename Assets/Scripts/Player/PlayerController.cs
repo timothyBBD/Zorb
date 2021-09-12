@@ -76,9 +76,14 @@ public class PlayerController : MonoBehaviour
     public bool isDead;
     public Animator animator;
     private PlayerMovement playerMovement;
+
+    private AudioSource audioSource;
+    public AudioClip hitNoise;
+
     private void Start()
     {
         playerMovement = gameObject.GetComponent<PlayerMovement>();
+        audioSource = GetComponent<AudioSource>();
 
         UpdateStats();
     }
@@ -150,6 +155,8 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("isDead", true);
             StartCoroutine(Respawn());
         }
+        audioSource.pitch = UnityEngine.Random.Range(0.6f, 0.8f);
+        audioSource.PlayOneShot(hitNoise);
     }
 
     IEnumerator Respawn()
