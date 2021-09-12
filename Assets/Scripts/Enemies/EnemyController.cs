@@ -1,10 +1,12 @@
 using Pathfinding;
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class EnemyController : MonoBehaviour
 {
     public float health;
+    public HealthBar healthBar;
 
     SpriteRenderer spriteRenderer;
     float fadeSpeed = 1f;
@@ -12,12 +14,20 @@ public class EnemyController : MonoBehaviour
     AIPath pathfinding;
     EnemyAI enemyAI;
 
+    Color originalColor;
+
     void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        originalColor = spriteRenderer.color;
         enemyAnimator = GetComponent<Animator>();
         pathfinding = GetComponent<AIPath>();
         enemyAI = GetComponent<EnemyAI>();
+    }
+
+    void Start()
+    {
+        healthBar.SetMaxHealth(health);
     }
 
     public void OnTriggerEnter2D(Collider2D collider)
@@ -37,11 +47,18 @@ public class EnemyController : MonoBehaviour
 
     private void TakeDamage(float damage)
     {
+        FlashRed();
         health -= damage;
+        healthBar.SetHealth(health);
         if (health <= 0)
         {
-            pathfinding.enabled = false;
-            enemyAI.enabled = false;
+            Destroy(GetComponent<Collider2D>());
+            Destroy(pathfinding);
+            Destroy(enemyAI);
+            foreach (Transform t in transform)
+            {
+                Destroy(t.gameObject);
+            }
             enemyAnimator.SetBool("IsDead", true);
             StartCoroutine(FadeOutAndDestroy());
         }
@@ -60,5 +77,15 @@ public class EnemyController : MonoBehaviour
         Destroy(gameObject);
     }
 
+    void FlashRed()
+    {
+
+        spriteRenderer.color = Color.red;
+        Invoke("ResetColor", 0.1f);
+    }
+    void ResetColor()
+    {
+        spriteRenderer.color = originalColor;
+    }
 
 }
