@@ -6,8 +6,16 @@ public class LoadLevel : MonoBehaviour
 {
     public Fading fading;
 
-    private void Awake() {
+    GameObject gunParts;
+
+    private void Awake()
+    {
         StartCoroutine(FadeIn());
+        gunParts = GameObject.FindGameObjectWithTag("GunParts");
+        for (int i = 0; i < GameState.PartsCollected.Length; i++)
+        {
+            gunParts.transform.GetChild(i).gameObject.SetActive(GameState.PartsCollected[i]);
+        }
     }
     IEnumerator FadeIn()
     {
