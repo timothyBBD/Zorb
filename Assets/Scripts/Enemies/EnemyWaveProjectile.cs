@@ -6,8 +6,6 @@ public class EnemyWaveProjectile : EnemyBulletProjectile
 {
     Animator projectileAnimator;
 
-    PlayerMovement playerMovement;
-
     public Vector3 targetScale = Vector3.one;
     public Vector3 startingScale = Vector3.zero;
     public float scaleSpeed = 2.0f;

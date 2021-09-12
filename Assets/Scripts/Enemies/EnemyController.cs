@@ -35,7 +35,6 @@ public class EnemyController : MonoBehaviour
         {
             var damage = collider.gameObject.GetComponent<PlayerBullet>().damage;
             TakeDamage(damage);
-            Destroy(collider.gameObject);
         }
     }
 

@@ -10,7 +10,6 @@ public class PlayerBullet : MonoBehaviour
     SpriteRenderer spriteRenderer;
     float fadeSpeed = 1.5f;
 
-
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -18,7 +17,7 @@ public class PlayerBullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.gameObject.tag == "Obstacles")
+        if (collider.gameObject.tag == "Obstacles" || collider.gameObject.tag == "Enemy")
         {
             DestroyBullet();
         }
